@@ -36,6 +36,8 @@ public:
 	void fadeToColor(float r, float g, float b, float speed);
 	void addToFluid(ofVec2f pos, ofVec2f vel, bool addColor, bool addForce);
 
+    void addForceFromOpticalFlow();
+    
     //video stuff
     OpticalFlowGenerator mOpticalFlowGenerator;
     

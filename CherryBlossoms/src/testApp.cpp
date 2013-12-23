@@ -7,7 +7,8 @@ float tuioXScaler = 1;
 float tuioYScaler = 1;
 
 //--------------------------------------------------------------
-void testApp::setup() {	 
+void testApp::setup()
+{
 	for(int i=0; i<strlen(sz); i++) sz[i] += 20;
 	
 	// setup fluid stuff
@@ -23,7 +24,6 @@ void testApp::setup() {
 	ofSetFrameRate(60);
 	ofBackground(0, 0, 0);
 	ofSetVerticalSync(false);
-	
 
 	
 #ifdef USE_GUI 
@@ -50,7 +50,7 @@ void testApp::setup() {
     gui.loadFromXML();
 	gui.setDefaultKeys(true);
 	gui.setAutoSave(true);
-    gui.show();
+//    gui.show();
 #endif
 	
 	windowResized(ofGetWidth(), ofGetHeight());		// force this at start (cos I don't think it is called)
@@ -62,22 +62,26 @@ void testApp::setup() {
 }
 
 
-void testApp::fadeToColor(float r, float g, float b, float speed) {
+void testApp::fadeToColor(float r, float g, float b, float speed)
+{
     glColor4f(r, g, b, speed);
 	ofRect(0, 0, ofGetWidth(), ofGetHeight());
 }
 
 
 // add force and dye to fluid, and create particles
-void testApp::addToFluid(ofVec2f pos, ofVec2f vel, bool addColor, bool addForce) {
+void testApp::addToFluid(ofVec2f pos, ofVec2f vel, bool addColor, bool addForce)
+{
     float speed = vel.x * vel.x  + vel.y * vel.y * msa::getWindowAspectRatio() * msa::getWindowAspectRatio();    // balance the x and y components of speed with the screen aspect ratio
-    if(speed > 0) {
+    if(speed > 0)
+    {
 		pos.x = ofClamp(pos.x, 0.0f, 1.0f);
 		pos.y = ofClamp(pos.y, 0.0f, 1.0f);
 		
         int index = fluidSolver.getIndexForPos(pos);
 		
-		if(addColor) {
+		if(addColor)
+        {
 //			Color drawColor(CM_HSV, (getElapsedFrames() % 360) / 360.0f, 1, 1);
 			ofColor drawColor;
 			drawColor.setHsb((ofGetFrameNum() % 255), 255, 255);
@@ -90,30 +94,75 @@ void testApp::addToFluid(ofVec2f pos, ofVec2f vel, bool addColor, bool addForce)
 		
 		if(addForce)
 			fluidSolver.addForceAtIndex(index, vel * velocityMult);
-		
+
     }
 }
 
 
-void testApp::update(){
+void testApp::update()
+{
     mOpticalFlowGenerator.update();
-	if(resizeFluid) 	{
+    addForceFromOpticalFlow();
+	if(resizeFluid)
+    {
 		fluidSolver.setSize(fluidCellsX, fluidCellsX / msa::getWindowAspectRatio());
 		fluidDrawer.setup(&fluidSolver);
 		resizeFluid = false;
 	}
-	
-
-	
 	fluidSolver.update();
 }
 
-void testApp::draw(){
-	if(drawFluid) {
+void testApp::addForceFromOpticalFlow()
+{
+    bool addColor = true;
+    bool addForce = true;
+    ofVec2f** vects = mOpticalFlowGenerator.getFlowVectors();
+    ofVec2f flowDimensions = mOpticalFlowGenerator.getWHVector();
+    for(int i = 0; i < flowDimensions.x; i++)
+    {
+        for(int j = 0; j < flowDimensions.y; j++)
+        {
+            ofVec2f pos = ofVec2f(i,j);
+            pos += ofVec2f(ofRandom(1),ofRandom(1));
+            pos /= flowDimensions;
+            ofVec2f vel = vects[j][i];
+            float speed = vel.x * vel.x  + vel.y * vel.y * msa::getWindowAspectRatio() * msa::getWindowAspectRatio();    // balance the x and y components of speed with the screen aspect ratio
+            if(speed > 0)
+            {
+                pos.x = ofClamp(pos.x, 0.0f, 1.0f);
+                pos.y = ofClamp(pos.y, 0.0f, 1.0f);
+                
+                int index = fluidSolver.getIndexForPos(pos);
+                
+                if(addColor)
+                {
+                    //			Color drawColor(CM_HSV, (getElapsedFrames() % 360) / 360.0f, 1, 1);
+                    ofColor drawColor;
+                    drawColor.setHsb((ofGetFrameNum() % 255), 255, 255);
+                    
+                    fluidSolver.addColorAtIndex(index, drawColor * colorMult);
+                    
+                    if(drawParticles)
+                        particleSystem.addParticles(pos * ofVec2f(ofGetWindowSize()), 10);
+                }
+                
+                if(addForce)
+                    fluidSolver.addForceAtIndex(index, vel * velocityMult);
+                
+            }
+        }
+    }
+    
+}
+void testApp::draw()
+{
+	if(drawFluid)
+    {
         ofClear(0);
 		glColor3f(1, 1, 1);
 		fluidDrawer.draw(0, 0, ofGetWidth(), ofGetHeight());
-	} else {
+	} else
+    {
 //		if(ofGetFrameNum()%5==0)
             fadeToColor(0, 0, 0, 0.01);
 	}
@@ -125,11 +174,12 @@ void testApp::draw(){
 #ifdef USE_GUI 
 	gui.draw();
 #endif
-    mOpticalFlowGenerator.draw();
+//    mOpticalFlowGenerator.draw();
 }
 
 
-void testApp::keyPressed  (int key){ 
+void testApp::keyPressed  (int key)
+{
     switch(key) {
 		case '1':
 			fluidDrawer.setDrawMode(msa::fluid::kDrawColor);
@@ -178,7 +228,8 @@ void testApp::keyPressed  (int key){
 
 
 //--------------------------------------------------------------
-void testApp::mouseMoved(int x, int y){
+void testApp::mouseMoved(int x, int y)
+{
 	ofVec2f eventPos = ofVec2f(x, y);
 	ofVec2f mouseNorm = ofVec2f(eventPos) / ofGetWindowSize();
 	ofVec2f mouseVel = ofVec2f(eventPos - pMouse) / ofGetWindowSize();
@@ -186,7 +237,8 @@ void testApp::mouseMoved(int x, int y){
 	pMouse = eventPos;
 }
 
-void testApp::mouseDragged(int x, int y, int button) {
+void testApp::mouseDragged(int x, int y, int button)
+{
 	ofVec2f eventPos = ofVec2f(x, y);
 	ofVec2f mouseNorm = ofVec2f(eventPos) / ofGetWindowSize();
 	ofVec2f mouseVel = ofVec2f(eventPos - pMouse) / ofGetWindowSize();

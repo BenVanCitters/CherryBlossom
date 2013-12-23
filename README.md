@@ -1,7 +1,3 @@
-CherryBlossom
-=============
-Cherry Bloosom App
-
 Currently requires the following ofAddons
 =========================================
 

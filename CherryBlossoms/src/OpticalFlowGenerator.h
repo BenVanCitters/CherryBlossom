@@ -23,9 +23,11 @@ class OpticalFlowGenerator
     
 public:
     OpticalFlowGenerator();
+    ~OpticalFlowGenerator();
     void draw();
     void update();
-    ~OpticalFlowGenerator();
+    ofVec2f**  getFlowVectors();
+    ofVec2f  getWHVector();
 };
 
 #endif /* defined(__CherryBlossoms__OpticalFlowGenerator__) */
