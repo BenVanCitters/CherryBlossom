@@ -9,7 +9,7 @@
     </Button_resizeFluid>
     <SliderFloat_colorMult>
         <name>colorMult</name>
-        <value>6.000000000</value>
+        <value>24.000000000</value>
     </SliderFloat_colorMult>
     <SliderFloat_velocityMult>
         <name>velocityMult</name>
@@ -25,7 +25,7 @@
     </SliderFloat_fs.colorDiffusion>
     <SliderFloat_fs.fadeSpeed>
         <name>fs.fadeSpeed</name>
-        <value>0.003500000</value>
+        <value>0.001500000</value>
     </SliderFloat_fs.fadeSpeed>
     <SliderInt_fs.solverIterations>
         <name>fs.solverIterations</name>

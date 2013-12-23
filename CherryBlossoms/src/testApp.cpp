@@ -116,6 +116,8 @@ void testApp::addForceFromOpticalFlow()
 {
     bool addColor = true;
     bool addForce = true;
+
+    
     ofVec2f** vects = mOpticalFlowGenerator.getFlowVectors();
     ofVec2f flowDimensions = mOpticalFlowGenerator.getWHVector();
     for(int i = 0; i < flowDimensions.x; i++)
@@ -140,7 +142,7 @@ void testApp::addForceFromOpticalFlow()
                     ofColor drawColor;
                     drawColor.setHsb((ofGetFrameNum() % 255), 255, 255);
                     
-                    fluidSolver.addColorAtIndex(index, drawColor * colorMult);
+//                    fluidSolver.addColorAtIndex(index, drawColor * colorMult);
                     
                     if(drawParticles)
                         particleSystem.addParticles(pos * ofVec2f(ofGetWindowSize()), 10);

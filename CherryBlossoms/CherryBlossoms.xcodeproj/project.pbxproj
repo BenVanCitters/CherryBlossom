@@ -54,6 +54,7 @@
 		84CDEC5F18678C93005D7F5D /* Utilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84CDEBFB18678C92005D7F5D /* Utilities.cpp */; };
 		84CDEC6018678C93005D7F5D /* Wrappers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84CDEBFC18678C92005D7F5D /* Wrappers.cpp */; };
 		84CDECB4186799C3005D7F5D /* OpticalFlowGenerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84CDECB2186799C3005D7F5D /* OpticalFlowGenerator.cpp */; };
+		84CDECB718681DF7005D7F5D /* BlossomParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84CDECB518681DF7005D7F5D /* BlossomParticle.cpp */; };
 		BBAB23CB13894F3D00AA2426 /* GLUT.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = BBAB23BE13894E4700AA2426 /* GLUT.framework */; };
 		E4328149138ABC9F0047C5CB /* openFrameworksDebug.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E4328148138ABC890047C5CB /* openFrameworksDebug.a */; };
 		E45BE97B0E8CC7DD009D7055 /* AGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E45BE9710E8CC7DD009D7055 /* AGL.framework */; };
@@ -293,6 +294,8 @@
 		84CDEC0118678C93005D7F5D /* ofxCv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCv.h; sourceTree = "<group>"; };
 		84CDECB2186799C3005D7F5D /* OpticalFlowGenerator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = OpticalFlowGenerator.cpp; sourceTree = "<group>"; };
 		84CDECB3186799C3005D7F5D /* OpticalFlowGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpticalFlowGenerator.h; sourceTree = "<group>"; };
+		84CDECB518681DF7005D7F5D /* BlossomParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BlossomParticle.cpp; sourceTree = "<group>"; };
+		84CDECB618681DF7005D7F5D /* BlossomParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlossomParticle.h; sourceTree = "<group>"; };
 		A03B32B28652D6533C3A1C79 /* MSAFluidDrawerBase.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = MSAFluidDrawerBase.h; path = ../../../addons/ofxMSAFluid/src/MSAFluidDrawerBase.h; sourceTree = SOURCE_ROOT; };
 		A0E48FD05BDA9491DCA86AAA /* MSAFluidDrawerBase.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = MSAFluidDrawerBase.cpp; path = ../../../addons/ofxMSAFluid/src/MSAFluidDrawerBase.cpp; sourceTree = SOURCE_ROOT; };
 		BBAB23BE13894E4700AA2426 /* GLUT.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLUT.framework; path = ../../../libs/glut/lib/osx/GLUT.framework; sourceTree = "<group>"; };
@@ -962,6 +965,8 @@
 				84564E6F18484B1000091CEF /* testApp.h */,
 				84CDECB2186799C3005D7F5D /* OpticalFlowGenerator.cpp */,
 				84CDECB3186799C3005D7F5D /* OpticalFlowGenerator.h */,
+				84CDECB518681DF7005D7F5D /* BlossomParticle.cpp */,
+				84CDECB618681DF7005D7F5D /* BlossomParticle.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -1101,6 +1106,7 @@
 				84564ECC18484DE200091CEF /* ofxSimpleGuiToggle.cpp in Sources */,
 				84564ECD18484DE200091CEF /* ofxSimpleGuiConfig.cpp in Sources */,
 				84564EC918484DE200091CEF /* ofxSimpleGuiQuadWarp.cpp in Sources */,
+				84CDECB718681DF7005D7F5D /* BlossomParticle.cpp in Sources */,
 				84564ECF18484DE200091CEF /* ofxSimpleGuiPage.cpp in Sources */,
 				84CDE97B18678C2F005D7F5D /* ofxCvGrayscaleImage.cpp in Sources */,
 				84CDEC5F18678C93005D7F5D /* Utilities.cpp in Sources */,
