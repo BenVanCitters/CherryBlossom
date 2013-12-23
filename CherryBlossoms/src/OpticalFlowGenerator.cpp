@@ -42,27 +42,44 @@ void OpticalFlowGenerator::update()
         mFlow.setWindowSize(8);
         mFlow.calcOpticalFlow(mCam);
         
-        /*
+        
          
+         
+         for(int y = 1; y + 1 < mYSteps; y++)
+         {
+             for(int x = 1; x + 1 < mXSteps; x++)
+             {
+         
+                 int i = y * mXSteps + x;
+                 ofVec2f position(x * mStepSize, y * mStepSize);
+                 ofRectangle area(position - ofVec2f(mStepSize, mStepSize) / 2, mStepSize, mStepSize);
+                 mFlowVectors[y][x] = mFlow.getAverageFlowInRegion(area);
+//                 ofVec2f offset = mFlowVectors[y][x];
+//                 mesh.setVertex(i, position + distortionStrength * offset);
+//                 i++;
+             }
+         }
+/*
+         
+         //////
          for(int i = 0; i < quads.size();i++)
          {
-         ofRectangle area(quads[i].mPosition - ofVec2f(stepSize, stepSize) / 2, stepSize, stepSize);
-         if(area.x > 0 && area.y > 0 && area.getRight() < 320 && area.getBottom() < 240)
-         {
-         ofVec2f vel =flow.getAverageFlowInRegion(area);
-         quads[i].mVelocity = (quads[i].mVelocity+vel) *.4;
-         
-         }
-         quads[i].update();
-         }
+//             ofRectangle area(quads[i].mPosition - ofVec2f(stepSize, stepSize) / 2, stepSize, stepSize);
+             if(area.x > 0 && area.y > 0 && area.getRight() < 320 && area.getBottom() < 240)
+             {
+                 ofVec2f vel =flow.getAverageFlowInRegion(area);
+                 quads[i].mVelocity = (quads[i].mVelocity+vel) *.4;
+             
+             }
 
-         
+         }
          */
     }
 }
 
 void OpticalFlowGenerator::draw()
 {
+    mCam.draw(0, 0);
     for(int y = 1; y + 1 < mYSteps; y++)
     {
         for(int x = 1; x + 1 < mXSteps; x++)

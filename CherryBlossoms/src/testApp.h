@@ -16,11 +16,7 @@
 #define USE_GUI		
 
 
-#ifdef USE_TUIO
-#include "ofxTuio.h"
-#define tuioCursorSpeedMult				0.5	// the iphone screen is so small, easy to rack up huge velocities! need to scale down 
-#define tuioStationaryForce				0.001f	// force exerted when cursor is stationary
-#endif
+
 
 
 #ifdef USE_GUI 
@@ -41,7 +37,7 @@ public:
 	void addToFluid(ofVec2f pos, ofVec2f vel, bool addColor, bool addForce);
 
     //video stuff
-    OpticalFlowGenerator opt;
+    OpticalFlowGenerator mOpticalFlowGenerator;
     
     
     float                   colorMult;
@@ -57,10 +53,6 @@ public:
 	ParticleSystem          particleSystem;
 	
 	ofVec2f                 pMouse;
-	
-#ifdef USE_TUIO
-	ofxTuioClient tuioClient;
-#endif	
 	
 };
 

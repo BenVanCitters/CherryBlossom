@@ -24,9 +24,6 @@ void testApp::setup() {
 	ofBackground(0, 0, 0);
 	ofSetVerticalSync(false);
 	
-#ifdef USE_TUIO
-	tuioClient.start(3333);
-#endif
 
 	
 #ifdef USE_GUI 
@@ -99,28 +96,14 @@ void testApp::addToFluid(ofVec2f pos, ofVec2f vel, bool addColor, bool addForce)
 
 
 void testApp::update(){
+    mOpticalFlowGenerator.update();
 	if(resizeFluid) 	{
 		fluidSolver.setSize(fluidCellsX, fluidCellsX / msa::getWindowAspectRatio());
 		fluidDrawer.setup(&fluidSolver);
 		resizeFluid = false;
 	}
 	
-#ifdef USE_TUIO
-	tuioClient.getMessage();
-	
-	// do finger stuff
-	list<ofxTuioCursor*>cursorList = tuioClient.getTuioCursors();
-	for(list<ofxTuioCursor*>::iterator it=cursorList.begin(); it != cursorList.end(); it++) {
-		ofxTuioCursor *tcur = (*it);
-        float vx = tcur->getXSpeed() * tuioCursorSpeedMult;
-        float vy = tcur->getYSpeed() * tuioCursorSpeedMult;
-        if(vx == 0 && vy == 0) {
-            vx = ofRandom(-tuioStationaryForce, tuioStationaryForce);
-            vy = ofRandom(-tuioStationaryForce, tuioStationaryForce);
-        }
-        addToFluid(ofVec2f(tcur->getX() * tuioXScaler, tcur->getY() * tuioYScaler), ofVec2f(vx, vy), true, true);
-    }
-#endif
+
 	
 	fluidSolver.update();
 }
@@ -142,6 +125,7 @@ void testApp::draw(){
 #ifdef USE_GUI 
 	gui.draw();
 #endif
+    mOpticalFlowGenerator.draw();
 }
 
 
