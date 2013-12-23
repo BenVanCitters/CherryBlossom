@@ -1,7 +1,7 @@
 <controls>
     <SliderInt_fluidCellsX>
         <name>fluidCellsX</name>
-        <value>69</value>
+        <value>78</value>
     </SliderInt_fluidCellsX>
     <Button_resizeFluid>
         <name>resizeFluid</name>
@@ -17,7 +17,7 @@
     </SliderFloat_velocityMult>
     <SliderFloat_fs.viscocity>
         <name>fs.viscocity</name>
-        <value>0.000150000</value>
+        <value>0.000100000</value>
     </SliderFloat_fs.viscocity>
     <SliderFloat_fs.colorDiffusion>
         <name>fs.colorDiffusion</name>
@@ -25,15 +25,15 @@
     </SliderFloat_fs.colorDiffusion>
     <SliderFloat_fs.fadeSpeed>
         <name>fs.fadeSpeed</name>
-        <value>0.007000000</value>
+        <value>0.003500000</value>
     </SliderFloat_fs.fadeSpeed>
     <SliderInt_fs.solverIterations>
         <name>fs.solverIterations</name>
-        <value>8</value>
+        <value>12</value>
     </SliderInt_fs.solverIterations>
     <SliderFloat_fs.deltaT>
         <name>fs.deltaT</name>
-        <value>0.639000058</value>
+        <value>0.197999999</value>
     </SliderFloat_fs.deltaT>
     <ComboBox_fd.drawMode>
         <name>fd.drawMode</name>
