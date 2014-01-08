@@ -34,6 +34,7 @@
 		84564EDC18484E4D00091CEF /* tinyxmlerror.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84564ED618484E4D00091CEF /* tinyxmlerror.cpp */; };
 		84564EDD18484E4E00091CEF /* tinyxmlparser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84564ED718484E4D00091CEF /* tinyxmlparser.cpp */; };
 		84564EDE18484E4E00091CEF /* ofxXmlSettings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84564ED918484E4D00091CEF /* ofxXmlSettings.cpp */; };
+		84AFB4E3187DE8FA00BEA084 /* FlowerParticleSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84AFB4E1187DE8FA00BEA084 /* FlowerParticleSystem.cpp */; };
 		84CDE97818678C2F005D7F5D /* ofxCvColorImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84CDE96618678C2F005D7F5D /* ofxCvColorImage.cpp */; };
 		84CDE97918678C2F005D7F5D /* ofxCvContourFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84CDE96918678C2F005D7F5D /* ofxCvContourFinder.cpp */; };
 		84CDE97A18678C2F005D7F5D /* ofxCvFloatImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84CDE96B18678C2F005D7F5D /* ofxCvFloatImage.cpp */; };
@@ -165,6 +166,8 @@
 		84564ED718484E4D00091CEF /* tinyxmlparser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = tinyxmlparser.cpp; sourceTree = "<group>"; };
 		84564ED918484E4D00091CEF /* ofxXmlSettings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxXmlSettings.cpp; sourceTree = "<group>"; };
 		84564EDA18484E4D00091CEF /* ofxXmlSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxXmlSettings.h; sourceTree = "<group>"; };
+		84AFB4E1187DE8FA00BEA084 /* FlowerParticleSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FlowerParticleSystem.cpp; sourceTree = "<group>"; };
+		84AFB4E2187DE8FA00BEA084 /* FlowerParticleSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowerParticleSystem.h; sourceTree = "<group>"; };
 		84CDE90118678C2F005D7F5D /* cv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cv.h; sourceTree = "<group>"; };
 		84CDE90218678C2F005D7F5D /* cv.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = cv.hpp; sourceTree = "<group>"; };
 		84CDE90318678C2F005D7F5D /* cvaux.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cvaux.h; sourceTree = "<group>"; };
@@ -957,16 +960,18 @@
 			isa = PBXGroup;
 			children = (
 				84564E6918484B1000091CEF /* main.cpp */,
-				84564E6A18484B1000091CEF /* Particle.cpp */,
-				84564E6B18484B1000091CEF /* Particle.h */,
 				84564E6C18484B1000091CEF /* ParticleSystem.cpp */,
 				84564E6D18484B1000091CEF /* ParticleSystem.h */,
+				84564E6A18484B1000091CEF /* Particle.cpp */,
+				84564E6B18484B1000091CEF /* Particle.h */,
+				84AFB4E1187DE8FA00BEA084 /* FlowerParticleSystem.cpp */,
+				84AFB4E2187DE8FA00BEA084 /* FlowerParticleSystem.h */,
+				84CDECB518681DF7005D7F5D /* BlossomParticle.cpp */,
+				84CDECB618681DF7005D7F5D /* BlossomParticle.h */,
 				84564E6E18484B1000091CEF /* testApp.cpp */,
 				84564E6F18484B1000091CEF /* testApp.h */,
 				84CDECB2186799C3005D7F5D /* OpticalFlowGenerator.cpp */,
 				84CDECB3186799C3005D7F5D /* OpticalFlowGenerator.h */,
-				84CDECB518681DF7005D7F5D /* BlossomParticle.cpp */,
-				84CDECB618681DF7005D7F5D /* BlossomParticle.h */,
 			);
 			path = src;
 			sourceTree = SOURCE_ROOT;
@@ -1093,6 +1098,7 @@
 				84CDE97818678C2F005D7F5D /* ofxCvColorImage.cpp in Sources */,
 				84564E7118484B1000091CEF /* Particle.cpp in Sources */,
 				5EB9303FA9B240750638AE7C /* MSAFluidSolver.cpp in Sources */,
+				84AFB4E3187DE8FA00BEA084 /* FlowerParticleSystem.cpp in Sources */,
 				84CDEC5718678C93005D7F5D /* Calibration.cpp in Sources */,
 				84CDEC6018678C93005D7F5D /* Wrappers.cpp in Sources */,
 				84CDECB4186799C3005D7F5D /* OpticalFlowGenerator.cpp in Sources */,

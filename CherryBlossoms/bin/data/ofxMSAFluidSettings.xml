@@ -17,7 +17,7 @@
     </SliderFloat_velocityMult>
     <SliderFloat_fs.viscocity>
         <name>fs.viscocity</name>
-        <value>0.000100000</value>
+        <value>0.003750000</value>
     </SliderFloat_fs.viscocity>
     <SliderFloat_fs.colorDiffusion>
         <name>fs.colorDiffusion</name>
