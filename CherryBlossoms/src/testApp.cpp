@@ -19,7 +19,6 @@ void testApp::setup()
 	fluidCellsX			= 150;
 	
 	drawFluid			= true;
-	drawParticles		= true;
 	
 	ofSetFrameRate(60);
 	ofBackground(0, 0, 0);
@@ -39,8 +38,7 @@ void testApp::setup()
 	gui.addComboBox("fd.drawMode", (int&)fluidDrawer.drawMode, msa::fluid::getDrawModeTitles());
 	gui.addToggle("fs.doRGB", fluidSolver.doRGB); 
 	gui.addToggle("fs.doVorticityConfinement", fluidSolver.doVorticityConfinement); 
-	gui.addToggle("drawFluid", drawFluid); 
-	gui.addToggle("drawParticles", drawParticles); 
+	gui.addToggle("drawFluid", drawFluid);
 	gui.addToggle("fs.wrapX", fluidSolver.wrap_x);
 	gui.addToggle("fs.wrapY", fluidSolver.wrap_y);
     gui.addSlider("tuioXScaler", tuioXScaler, 0, 2);
@@ -88,13 +86,11 @@ void testApp::addToFluid(ofVec2f pos, ofVec2f vel, bool addColor, bool addForce)
 			
 			fluidSolver.addColorAtIndex(index, drawColor * colorMult);
 			
-			if(drawParticles)
-				particleSystem.addParticles(pos * ofVec2f(ofGetWindowSize()), 10);
+            particleSystem.addParticles(pos * ofVec2f(ofGetWindowSize()), 10);
 		}
 		
 		if(addForce)
 			fluidSolver.addForceAtIndex(index, vel * velocityMult);
-
     }
 }
 
@@ -138,24 +134,19 @@ void testApp::addForceFromOpticalFlow()
                 
                 if(addColor)
                 {
-                    //			Color drawColor(CM_HSV, (getElapsedFrames() % 360) / 360.0f, 1, 1);
                     ofColor drawColor;
                     drawColor.setHsb((ofGetFrameNum() % 255), 255, 255);
                     
-//                    fluidSolver.addColorAtIndex(index, drawColor * colorMult);
-                    
-                    if(drawParticles)
-                        particleSystem.addParticles(pos * ofVec2f(ofGetWindowSize()), 10);
+                    particleSystem.addParticles(pos * ofVec2f(ofGetWindowSize()), 10);
                 }
                 
                 if(addForce)
                     fluidSolver.addForceAtIndex(index, vel * velocityMult);
-                
             }
         }
     }
-    
 }
+
 void testApp::draw()
 {
 	if(drawFluid)
@@ -168,8 +159,8 @@ void testApp::draw()
 //		if(ofGetFrameNum()%5==0)
             fadeToColor(0, 0, 0, 0.01);
 	}
-	if(drawParticles)
-		particleSystem.updateAndDraw(fluidSolver, ofGetWindowSize(), drawFluid);
+
+    particleSystem.updateAndDraw(fluidSolver, ofGetWindowSize(), drawFluid);
 	
 //	ofDrawBitmapString(sz, 50, 50);
 
@@ -201,10 +192,6 @@ void testApp::keyPressed  (int key)
     
 		case 'd':
 			drawFluid ^= true;
-			break;
-			
-		case 'p':
-			drawParticles ^= true;
 			break;
 			
 		case 'f':

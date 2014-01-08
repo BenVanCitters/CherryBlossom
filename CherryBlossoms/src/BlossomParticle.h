@@ -23,6 +23,8 @@ private:
     ofVec2f mVel;
     ofVec2f mPos;
     float mMass;
+    
+    bool mIsDead;
 };
 
 #endif /* defined(__CherryBlossoms__BlossomParticle__) */

@@ -47,7 +47,7 @@ public:
 	int                     fluidCellsX;
 	bool                    resizeFluid;
 	bool                    drawFluid;
-	bool                    drawParticles;
+//	bool                    drawParticles;
 	
 	msa::fluid::Solver      fluidSolver;
 	msa::fluid::DrawerGl	fluidDrawer;

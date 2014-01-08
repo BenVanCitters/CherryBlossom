@@ -10,15 +10,19 @@
 #define __CherryBlossoms__FlowerParticleSystem__
 
 #include <iostream>
+#include "BlossomParticle.h"
+#include "MSAFluidSolver.h"
 
 class FlowerParticleSystem
 {
 public:
     FlowerParticleSystem();
-    void update();
+    void update(const msa::fluid::Solver &solver);
     void draw();
+    void addParticle();
+	void addParticle(const ofVec3f &pos);
 private:
-    
+    std::vector<BlossomParticle> mBlossoms;
 };
 
 #endif /* defined(__CherryBlossoms__FlowerParticleSystem__) */
