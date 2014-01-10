@@ -14,15 +14,19 @@
 class BlossomParticle
 {
 public:
+    
     BlossomParticle();
+    BlossomParticle(int imgCount);
     void draw();
     void update();
 
-private:
     ofVbo mQuad;
-    ofVec2f mVel;
-    ofVec2f mPos;
+    ofVec3f mVel;
+    ofVec3f mPos;
+    ofVec3f mRots;
     float mMass;
+    
+    int mImgIndex;
     
     bool mIsDead;
 };

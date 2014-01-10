@@ -6,6 +6,8 @@
 
 #include "ofMain.h"
 #include "OpticalFlowGenerator.h"
+#include "FlowerParticleSystem.h"
+
 // comment this line out if you don't wanna use TUIO
 // you will need ofxTUIO & ofxOsc
 //#define USE_TUIO		
@@ -53,7 +55,7 @@ public:
 	msa::fluid::DrawerGl	fluidDrawer;
 	
 	ParticleSystem          particleSystem;
-	
+    FlowerParticleSystem    mFlowerParticles;
 	ofVec2f                 pMouse;
 	
 };

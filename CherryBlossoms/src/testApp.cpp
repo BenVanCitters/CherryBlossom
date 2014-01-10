@@ -99,7 +99,9 @@ void testApp::update()
 {
     mOpticalFlowGenerator.update();
     addForceFromOpticalFlow();
-	if(resizeFluid)
+    mFlowerParticles.update(fluidSolver);
+	
+    if(resizeFluid)
     {
 		fluidSolver.setSize(fluidCellsX, fluidCellsX / msa::getWindowAspectRatio());
 		fluidDrawer.setup(&fluidSolver);
@@ -151,17 +153,18 @@ void testApp::draw()
 {
 	if(drawFluid)
     {
-        ofClear(0);
+        ofClear(255,255,0);
 		glColor3f(1, 1, 1);
 		fluidDrawer.draw(0, 0, ofGetWidth(), ofGetHeight());
 	} else
     {
 //		if(ofGetFrameNum()%5==0)
-            fadeToColor(0, 0, 0, 0.01);
+            fadeToColor(1,1, 0, 0.01);
 	}
-
-    particleSystem.updateAndDraw(fluidSolver, ofGetWindowSize(), drawFluid);
-	
+    ofBackground(0,0,0);
+    
+//    particleSystem.updateAndDraw(fluidSolver, ofGetWindowSize(), drawFluid);
+	mFlowerParticles.draw();
 //	ofDrawBitmapString(sz, 50, 50);
 
 #ifdef USE_GUI 

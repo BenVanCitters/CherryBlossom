@@ -13,11 +13,11 @@
     </SliderFloat_colorMult>
     <SliderFloat_velocityMult>
         <name>velocityMult</name>
-        <value>6.500000000</value>
+        <value>1.500000000</value>
     </SliderFloat_velocityMult>
     <SliderFloat_fs.viscocity>
         <name>fs.viscocity</name>
-        <value>0.003750000</value>
+        <value>0.000550000</value>
     </SliderFloat_fs.viscocity>
     <SliderFloat_fs.colorDiffusion>
         <name>fs.colorDiffusion</name>
@@ -51,10 +51,6 @@
         <name>drawFluid</name>
         <value>1</value>
     </Toggle_drawFluid>
-    <Toggle_drawParticles>
-        <name>drawParticles</name>
-        <value>1</value>
-    </Toggle_drawParticles>
     <Toggle_fs.wrapX>
         <name>fs.wrapX</name>
         <value>0</value>

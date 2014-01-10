@@ -13,6 +13,9 @@
 #include "BlossomParticle.h"
 #include "MSAFluidSolver.h"
 
+#define FLOWER_COUNT 500
+#define FLOWER_IMG_COUNT 5
+
 class FlowerParticleSystem
 {
 public:
@@ -21,8 +24,10 @@ public:
     void draw();
     void addParticle();
 	void addParticle(const ofVec3f &pos);
+    
+    ofImage mPetalImgs[5];
 private:
-    std::vector<BlossomParticle> mBlossoms;
+    BlossomParticle mBlossoms[FLOWER_COUNT];
 };
 
 #endif /* defined(__CherryBlossoms__FlowerParticleSystem__) */
