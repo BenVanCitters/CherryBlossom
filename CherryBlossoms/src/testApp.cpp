@@ -78,16 +78,16 @@ void testApp::addToFluid(ofVec2f pos, ofVec2f vel, bool addColor, bool addForce)
 		
         int index = fluidSolver.getIndexForPos(pos);
 		
-		if(addColor)
-        {
-//			Color drawColor(CM_HSV, (getElapsedFrames() % 360) / 360.0f, 1, 1);
-			ofColor drawColor;
-			drawColor.setHsb((ofGetFrameNum() % 255), 255, 255);
-			
-			fluidSolver.addColorAtIndex(index, drawColor * colorMult);
-			
-            particleSystem.addParticles(pos * ofVec2f(ofGetWindowSize()), 10);
-		}
+//		if(addColor)
+//        {
+////			Color drawColor(CM_HSV, (getElapsedFrames() % 360) / 360.0f, 1, 1);
+//			ofColor drawColor;
+//			drawColor.setHsb((ofGetFrameNum() % 255), 255, 255);
+//			
+//			fluidSolver.addColorAtIndex(index, drawColor * colorMult);
+//			
+////            particleSystem.addParticles(pos * ofVec2f(ofGetWindowSize()), 10);
+//		}
 		
 		if(addForce)
 			fluidSolver.addForceAtIndex(index, vel * velocityMult);
@@ -134,16 +134,15 @@ void testApp::addForceFromOpticalFlow()
                 
                 int index = fluidSolver.getIndexForPos(pos);
                 
-                if(addColor)
-                {
-                    ofColor drawColor;
-                    drawColor.setHsb((ofGetFrameNum() % 255), 255, 255);
-                    
-                    particleSystem.addParticles(pos * ofVec2f(ofGetWindowSize()), 10);
-                }
+//                if(addColor)
+//                {
+//                    ofColor drawColor;
+//                    drawColor.setHsb((ofGetFrameNum() % 255), 255, 255);
+//                    
+////                    particleSystem.addParticles(pos * ofVec2f(ofGetWindowSize()), 10);
+//                }
                 
-                if(addForce)
-                    fluidSolver.addForceAtIndex(index, vel * velocityMult);
+                fluidSolver.addForceAtIndex(index, vel * velocityMult);
             }
         }
     }
@@ -151,16 +150,16 @@ void testApp::addForceFromOpticalFlow()
 
 void testApp::draw()
 {
-	if(drawFluid)
-    {
-        ofClear(255,255,0);
-		glColor3f(1, 1, 1);
-		fluidDrawer.draw(0, 0, ofGetWidth(), ofGetHeight());
-	} else
-    {
-//		if(ofGetFrameNum()%5==0)
-            fadeToColor(1,1, 0, 0.01);
-	}
+//	if(drawFluid)
+//    {
+//        ofClear(255,255,0);
+//		glColor3f(1, 1, 1);
+//		fluidDrawer.draw(0, 0, ofGetWidth(), ofGetHeight());
+//	} else
+//    {
+////		if(ofGetFrameNum()%5==0)
+//            fadeToColor(1,1, 0, 0.01);
+//	}
     ofBackground(0,0,0);
     
 //    particleSystem.updateAndDraw(fluidSolver, ofGetWindowSize(), drawFluid);
@@ -222,19 +221,19 @@ void testApp::keyPressed  (int key)
 //--------------------------------------------------------------
 void testApp::mouseMoved(int x, int y)
 {
-	ofVec2f eventPos = ofVec2f(x, y);
-	ofVec2f mouseNorm = ofVec2f(eventPos) / ofGetWindowSize();
-	ofVec2f mouseVel = ofVec2f(eventPos - pMouse) / ofGetWindowSize();
-	addToFluid(mouseNorm, mouseVel, true, true);
-	pMouse = eventPos;
+//	ofVec2f eventPos = ofVec2f(x, y);
+//	ofVec2f mouseNorm = ofVec2f(eventPos) / ofGetWindowSize();
+//	ofVec2f mouseVel = ofVec2f(eventPos - pMouse) / ofGetWindowSize();
+//	addToFluid(mouseNorm, mouseVel, true, true);
+//	pMouse = eventPos;
 }
 
 void testApp::mouseDragged(int x, int y, int button)
 {
-	ofVec2f eventPos = ofVec2f(x, y);
-	ofVec2f mouseNorm = ofVec2f(eventPos) / ofGetWindowSize();
-	ofVec2f mouseVel = ofVec2f(eventPos - pMouse) / ofGetWindowSize();
-	addToFluid(mouseNorm, mouseVel, false, true);
-	pMouse = eventPos;
+//	ofVec2f eventPos = ofVec2f(x, y);
+//	ofVec2f mouseNorm = ofVec2f(eventPos) / ofGetWindowSize();
+//	ofVec2f mouseVel = ofVec2f(eventPos - pMouse) / ofGetWindowSize();
+//	addToFluid(mouseNorm, mouseVel, false, true);
+//	pMouse = eventPos;
 }
 

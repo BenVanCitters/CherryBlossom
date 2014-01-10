@@ -54,7 +54,7 @@ public:
 	msa::fluid::Solver      fluidSolver;
 	msa::fluid::DrawerGl	fluidDrawer;
 	
-	ParticleSystem          particleSystem;
+//	ParticleSystem          particleSystem;
     FlowerParticleSystem    mFlowerParticles;
 	ofVec2f                 pMouse;
 	

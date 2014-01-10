@@ -27,7 +27,10 @@ public:
     
     ofImage mPetalImgs[5];
 private:
+    void drawBlossom(BlossomParticle* b, float tm);
+    void initVBO();
     BlossomParticle mBlossoms[FLOWER_COUNT];
+    ofVbo mQuad;
 };
 
 #endif /* defined(__CherryBlossoms__FlowerParticleSystem__) */

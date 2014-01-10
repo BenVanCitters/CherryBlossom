@@ -10,8 +10,6 @@
 		5EB9303FA9B240750638AE7C /* MSAFluidSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5DAA01DF76EA921C7DA7405D /* MSAFluidSolver.cpp */; };
 		825FA11382B216421AC896A6 /* MSAFluidDrawerBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0E48FD05BDA9491DCA86AAA /* MSAFluidDrawerBase.cpp */; };
 		84564E7018484B1000091CEF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84564E6918484B1000091CEF /* main.cpp */; };
-		84564E7118484B1000091CEF /* Particle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84564E6A18484B1000091CEF /* Particle.cpp */; };
-		84564E7218484B1000091CEF /* ParticleSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84564E6C18484B1000091CEF /* ParticleSystem.cpp */; };
 		84564E7318484B1000091CEF /* testApp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84564E6E18484B1000091CEF /* testApp.cpp */; };
 		84564E8018484CB200091CEF /* MSACoreGL.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84564E7D18484CB200091CEF /* MSACoreGL.cpp */; };
 		84564E9018484DD300091CEF /* ofxMSAInteractiveObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84564E8C18484DD300091CEF /* ofxMSAInteractiveObject.cpp */; };
@@ -111,10 +109,6 @@
 		58B94FFF012004B3A4E58F32 /* MSAFluid.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = MSAFluid.h; path = ../../../addons/ofxMSAFluid/src/MSAFluid.h; sourceTree = SOURCE_ROOT; };
 		5DAA01DF76EA921C7DA7405D /* MSAFluidSolver.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = MSAFluidSolver.cpp; path = ../../../addons/ofxMSAFluid/src/MSAFluidSolver.cpp; sourceTree = SOURCE_ROOT; };
 		84564E6918484B1000091CEF /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		84564E6A18484B1000091CEF /* Particle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Particle.cpp; sourceTree = "<group>"; };
-		84564E6B18484B1000091CEF /* Particle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Particle.h; sourceTree = "<group>"; };
-		84564E6C18484B1000091CEF /* ParticleSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ParticleSystem.cpp; sourceTree = "<group>"; };
-		84564E6D18484B1000091CEF /* ParticleSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ParticleSystem.h; sourceTree = "<group>"; };
 		84564E6E18484B1000091CEF /* testApp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = testApp.cpp; sourceTree = "<group>"; };
 		84564E6F18484B1000091CEF /* testApp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = testApp.h; sourceTree = "<group>"; };
 		84564E7918484CB200091CEF /* MSACore-Cinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MSACore-Cinder.h"; sourceTree = "<group>"; };
@@ -960,10 +954,6 @@
 			isa = PBXGroup;
 			children = (
 				84564E6918484B1000091CEF /* main.cpp */,
-				84564E6C18484B1000091CEF /* ParticleSystem.cpp */,
-				84564E6D18484B1000091CEF /* ParticleSystem.h */,
-				84564E6A18484B1000091CEF /* Particle.cpp */,
-				84564E6B18484B1000091CEF /* Particle.h */,
 				84AFB4E1187DE8FA00BEA084 /* FlowerParticleSystem.cpp */,
 				84AFB4E2187DE8FA00BEA084 /* FlowerParticleSystem.h */,
 				84CDECB518681DF7005D7F5D /* BlossomParticle.cpp */,
@@ -1096,7 +1086,6 @@
 				84CDE97D18678C2F005D7F5D /* ofxCvImage.cpp in Sources */,
 				84CDEC5C18678C93005D7F5D /* ObjectFinder.cpp in Sources */,
 				84CDE97818678C2F005D7F5D /* ofxCvColorImage.cpp in Sources */,
-				84564E7118484B1000091CEF /* Particle.cpp in Sources */,
 				5EB9303FA9B240750638AE7C /* MSAFluidSolver.cpp in Sources */,
 				84AFB4E3187DE8FA00BEA084 /* FlowerParticleSystem.cpp in Sources */,
 				84CDEC5718678C93005D7F5D /* Calibration.cpp in Sources */,
@@ -1105,7 +1094,6 @@
 				84564ED018484DE200091CEF /* ofxSimpleGuiToo.cpp in Sources */,
 				84564E7318484B1000091CEF /* testApp.cpp in Sources */,
 				84564E8018484CB200091CEF /* MSACoreGL.cpp in Sources */,
-				84564E7218484B1000091CEF /* ParticleSystem.cpp in Sources */,
 				84564ECE18484DE200091CEF /* ofxSimpleGuiControl.cpp in Sources */,
 				84CDEC5818678C93005D7F5D /* ContourFinder.cpp in Sources */,
 				84564EC518484DE200091CEF /* ofxSimpleGuiComboBox.cpp in Sources */,
