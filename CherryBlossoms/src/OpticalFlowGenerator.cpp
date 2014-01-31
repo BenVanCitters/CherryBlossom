@@ -13,8 +13,9 @@ using namespace cv;
 
 OpticalFlowGenerator::OpticalFlowGenerator()
 {
+    mFlow.setPyramidScale(.4);
     mCam.initGrabber(320, 240);
-    mStepSize = 6;
+    mStepSize = 8;
     mYSteps = mCam.getHeight() / mStepSize;
 	mXSteps = mCam.getWidth() / mStepSize;
     mFlowVectors = new ofVec2f*[mYSteps];

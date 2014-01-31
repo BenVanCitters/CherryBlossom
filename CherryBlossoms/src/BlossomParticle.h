@@ -11,6 +11,7 @@
 
 #include <iostream>
 #include "ofMain.h"
+enum blossomState{blossomStateGrowing,blossomStateWaiting,blossomStateFalling};
 class BlossomParticle
 {
 public:
@@ -20,14 +21,20 @@ public:
     void draw();
     void update();
 
+    float getGrowPct(float curTime);
+    
     ofVbo mQuad;
     ofVec3f mVel;
     ofVec3f mPos;
     ofVec3f mRots;
     float mMass;
     
-    int mImgIndex;
+    float mGrowStopTime;
+    float mGrowDur;
+    float mWaitStopTime;
     
+    int mImgIndex;
+    blossomState mState;
     bool mIsDead;
 };
 

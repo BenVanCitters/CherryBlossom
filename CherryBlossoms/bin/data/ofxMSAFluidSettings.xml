@@ -13,11 +13,11 @@
     </SliderFloat_colorMult>
     <SliderFloat_velocityMult>
         <name>velocityMult</name>
-        <value>0.500000000</value>
+        <value>3.500000000</value>
     </SliderFloat_velocityMult>
     <SliderFloat_fs.viscocity>
         <name>fs.viscocity</name>
-        <value>0.000150000</value>
+        <value>0.000100000</value>
     </SliderFloat_fs.viscocity>
     <SliderFloat_fs.colorDiffusion>
         <name>fs.colorDiffusion</name>

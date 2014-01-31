@@ -13,7 +13,7 @@
 #include "BlossomParticle.h"
 #include "MSAFluidSolver.h"
 
-#define FLOWER_COUNT 500
+#define FLOWER_COUNT 1000
 #define FLOWER_IMG_COUNT 5
 
 class FlowerParticleSystem

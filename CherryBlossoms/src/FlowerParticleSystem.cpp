@@ -30,26 +30,30 @@ void FlowerParticleSystem::update(const msa::fluid::Solver &solver)
 {
     ofVec2f windowSize = ofGetWindowSize();
     ofVec2f windowTrans = 1.f / windowSize;
-    ofVec2f gravity(0,2);
+    ofVec2f gravity(0,6);
 //    windowTrans  = 
     //move the particles
 //    for( std::vector<BlossomParticle>::iterator it = mBlossoms.begin(); it < mBlossoms.end(); it++)
     for(int i = 0; i < FLOWER_COUNT; i++)
     {
-        //accel particle
-        mBlossoms[i].mVel =solver.getVelocityAtPos( mBlossoms[i].mPos * windowTrans ) * (mBlossoms[i].mMass * FLUID_FORCE ) * windowSize/mBlossoms[i].mMass;
-        mBlossoms[i].mVel += mBlossoms[i].mVel * MOMENTUM;
-        
-        mBlossoms[i].mVel += gravity;
-        mBlossoms[i].mPos +=  mBlossoms[i].mVel;
-        
-        if(mBlossoms[i].mPos.y > windowSize.y ||
-           mBlossoms[i].mPos.x > windowSize.x ||
-           mBlossoms[i].mPos.y < 0 ||
-           mBlossoms[i].mPos.x < 0)
+        if( mBlossoms[i].mState == blossomStateFalling)
         {
-            mBlossoms[i] = BlossomParticle(FLOWER_IMG_COUNT);
+            //accel particle
+            mBlossoms[i].mVel =solver.getVelocityAtPos( mBlossoms[i].mPos * windowTrans ) * (mBlossoms[i].mMass * FLUID_FORCE ) * windowSize/mBlossoms[i].mMass;
+            mBlossoms[i].mVel += mBlossoms[i].mVel * MOMENTUM;
+            
+            mBlossoms[i].mVel += gravity/mBlossoms[i].mMass;
+            mBlossoms[i].mPos +=  mBlossoms[i].mVel;
+            
+            if(mBlossoms[i].mPos.y > windowSize.y ||
+               mBlossoms[i].mPos.x > windowSize.x ||
+               mBlossoms[i].mPos.y < 0 ||
+               mBlossoms[i].mPos.x < 0)
+            {
+                mBlossoms[i] = BlossomParticle(FLOWER_IMG_COUNT);
+            }
         }
+        mBlossoms[i].update();
         //vel = solver.getVelocityAtPos( pos * invWindowSize ) * (mass * FLUID_FORCE ) * windowSize + vel * MOMENTUM;
     }
 }
@@ -62,11 +66,11 @@ void FlowerParticleSystem::initVBO()
         0,3,4,
         0,4,1};
     //     ofVec3f n[12];
-    ofVec3f v[5]= {ofVec3f(0,0,-sqrt2Div2),
-        ofVec3f(-sqrt2Div2,sqrt2Div2, 0),
-        ofVec3f(sqrt2Div2,sqrt2Div2, 0),
-        ofVec3f(sqrt2Div2,-sqrt2Div2, 0),
-        ofVec3f(-sqrt2Div2,-sqrt2Div2, 0)};
+    ofVec3f v[5]= {ofVec3f(0,0,0),
+        ofVec3f(-sqrt2Div2,sqrt2Div2, sqrt2Div2),
+        ofVec3f(sqrt2Div2,sqrt2Div2, sqrt2Div2),
+        ofVec3f(sqrt2Div2,-sqrt2Div2, sqrt2Div2),
+        ofVec3f(-sqrt2Div2,-sqrt2Div2, sqrt2Div2)};
     
     //    ofVec3f n[5]= {ofVec3f(0,0,1),
     //                   ofVec3f(0,0,1),
@@ -107,11 +111,18 @@ void FlowerParticleSystem::drawBlossom(BlossomParticle* b, float tm)
     ofSetColor(255,255,255);
     ofPushMatrix();
     ofTranslate(b->mPos);
-    
-    ofRotateX(b->mRots.x*tm);
-    ofRotateY(b->mRots.y*tm);
-    ofRotateZ(b->mRots.z*tm);
-    
+    if(b->mState == blossomStateFalling)
+    {
+        ofRotateX(b->mRots.x*tm);
+        ofRotateY(b->mRots.y*tm);
+        ofRotateZ(b->mRots.z*tm);
+    }
+    else if(b->mState == blossomStateGrowing)
+    {
+        float pct = b->getGrowPct(tm);
+        
+        ofScale(pct,pct, MIN(pct*4,1));
+    }
     float scl = 20.f;
     ofScale(scl,scl,scl);
     mQuad.drawElements( GL_TRIANGLES, 12);

@@ -15,15 +15,19 @@ BlossomParticle::BlossomParticle()
 
 BlossomParticle::BlossomParticle(int imgCount)
 {
+    mState = blossomStateGrowing;
     float maxRSpd = 50;
     mRots = ofVec3f(ofRandom(maxRSpd*2)-maxRSpd,
                     ofRandom(maxRSpd*2)-maxRSpd,
                     ofRandom(maxRSpd*2)-maxRSpd);
     mImgIndex = (int)(ofRandom(imgCount));
-    mPos = ofVec3f(ofRandom(ofGetWindowWidth()),0,1200-ofRandom(4000) );
-    mMass = 3;
+    mPos = ofVec3f(ofRandom(ofGetWindowWidth()),ofRandom(600),1200-ofRandom(4000) );
+    mMass = 1+ofRandom(.5f);
     
-    
+    float tm = ofGetElapsedTimef();
+    mGrowDur =ofRandom(10);
+    mGrowStopTime = tm+ mGrowDur;
+//    mWaitStopTime
 //    float sqrt2Div2 = sqrt(2.f)/2.f;
 //    const ofIndexType Faces[] = {0,1,2,
 //        0,2,3,
@@ -53,9 +57,32 @@ BlossomParticle::BlossomParticle(int imgCount)
 //    mQuad.setIndexData( Faces, 12, GL_STATIC_DRAW );
 }
 
+float BlossomParticle::getGrowPct(float curTime)
+{
+    return 1.f-(mGrowStopTime-curTime)/mGrowDur;
+}
+
 void BlossomParticle::update()
 {
-    
+    float tm = ofGetElapsedTimef();
+    switch(mState){
+            case blossomStateGrowing:
+                if(tm > mGrowStopTime)
+                {
+                    mState = blossomStateWaiting;
+                    mWaitStopTime = tm + ofRandom(2);
+                }
+                break;
+            case blossomStateWaiting:
+                if(tm > mWaitStopTime)
+                {
+                    mState = blossomStateFalling;
+                }
+                break;
+//            case blossomStateFalling:
+        default:
+            break;
+    }
 }
 
 void BlossomParticle::draw()
