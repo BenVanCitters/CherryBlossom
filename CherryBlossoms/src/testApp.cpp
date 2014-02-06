@@ -204,8 +204,10 @@ void testApp::keyPressed  (int key)
 			fluidSolver.reset();
 			break;
         case 'g':
+#ifdef USE_GUI
 			gui.toggleDraw();
                         break;
+#endif
 		case 'b': {
 //			Timer timer;
 //			const int ITERS = 3000;
