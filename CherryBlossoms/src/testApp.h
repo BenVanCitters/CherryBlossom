@@ -5,7 +5,7 @@
 #include "ParticleSystem.h"
 
 #include "ofMain.h"
-#include "OpticalFlowGenerator.h"
+//#include "OpticalFlowGenerator.h"
 #include "FlowerParticleSystem.h"
 
 // comment this line out if you don't wanna use TUIO
@@ -41,7 +41,7 @@ public:
     void addForceFromOpticalFlow();
     
     //video stuff
-    OpticalFlowGenerator mOpticalFlowGenerator;
+   // OpticalFlowGenerator mOpticalFlowGenerator;
     
     
     float                   colorMult;

@@ -97,8 +97,8 @@ void testApp::addToFluid(ofVec2f pos, ofVec2f vel, bool addColor, bool addForce)
 
 void testApp::update()
 {
-    mOpticalFlowGenerator.update();
-    addForceFromOpticalFlow();
+//    mOpticalFlowGenerator.update();
+//    addForceFromOpticalFlow();
     mFlowerParticles.update(fluidSolver);
 	
     if(resizeFluid)
@@ -108,44 +108,6 @@ void testApp::update()
 		resizeFluid = false;
 	}
 	fluidSolver.update();
-}
-
-void testApp::addForceFromOpticalFlow()
-{
-    bool addColor = true;
-    bool addForce = true;
-
-    
-    ofVec2f** vects = mOpticalFlowGenerator.getFlowVectors();
-    ofVec2f flowDimensions = mOpticalFlowGenerator.getWHVector();
-    for(int i = 0; i < flowDimensions.x; i++)
-    {
-        for(int j = 0; j < flowDimensions.y; j++)
-        {
-            ofVec2f pos = ofVec2f(i,j);
-            pos += ofVec2f(ofRandom(1),ofRandom(1));
-            pos /= flowDimensions;
-            ofVec2f vel = vects[j][i];
-            float speed = vel.x * vel.x  + vel.y * vel.y * msa::getWindowAspectRatio() * msa::getWindowAspectRatio();    // balance the x and y components of speed with the screen aspect ratio
-            if(speed > 0)
-            {
-                pos.x = ofClamp(pos.x, 0.0f, 1.0f);
-                pos.y = ofClamp(pos.y, 0.0f, 1.0f);
-                
-                int index = fluidSolver.getIndexForPos(pos);
-                
-//                if(addColor)
-//                {
-//                    ofColor drawColor;
-//                    drawColor.setHsb((ofGetFrameNum() % 255), 255, 255);
-//                    
-////                    particleSystem.addParticles(pos * ofVec2f(ofGetWindowSize()), 10);
-//                }
-                
-                fluidSolver.addForceAtIndex(index, vel * velocityMult);
-            }
-        }
-    }
 }
 
 void testApp::draw()
