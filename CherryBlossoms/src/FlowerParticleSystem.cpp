@@ -26,22 +26,17 @@ FlowerParticleSystem::FlowerParticleSystem()
     }
 }
 
-void FlowerParticleSystem::update(const msa::fluid::Solver &solver)
+void FlowerParticleSystem::update()
 {
     ofVec2f windowSize = ofGetWindowSize();
     ofVec2f windowTrans = 1.f / windowSize;
     ofVec2f gravity(0,6);
-//    windowTrans  = 
     //move the particles
 //    for( std::vector<BlossomParticle>::iterator it = mBlossoms.begin(); it < mBlossoms.end(); it++)
     for(int i = 0; i < FLOWER_COUNT; i++)
     {
         if( mBlossoms[i].mState == blossomStateFalling)
         {
-            //accel particle
-            mBlossoms[i].mVel =solver.getVelocityAtPos( mBlossoms[i].mPos * windowTrans ) * (mBlossoms[i].mMass * FLUID_FORCE ) * windowSize/mBlossoms[i].mMass;
-            mBlossoms[i].mVel += mBlossoms[i].mVel * MOMENTUM;
-            
             mBlossoms[i].mVel += gravity/mBlossoms[i].mMass;
             mBlossoms[i].mPos +=  mBlossoms[i].mVel;
             
@@ -54,7 +49,6 @@ void FlowerParticleSystem::update(const msa::fluid::Solver &solver)
             }
         }
         mBlossoms[i].update();
-        //vel = solver.getVelocityAtPos( pos * invWindowSize ) * (mass * FLUID_FORCE ) * windowSize + vel * MOMENTUM;
     }
 }
 void FlowerParticleSystem::initVBO()
@@ -65,7 +59,7 @@ void FlowerParticleSystem::initVBO()
         0,2,3,
         0,3,4,
         0,4,1};
-    //     ofVec3f n[12];
+    
     ofVec3f v[5]= {ofVec3f(0,0,0),
         ofVec3f(-sqrt2Div2,sqrt2Div2, sqrt2Div2),
         ofVec3f(sqrt2Div2,sqrt2Div2, sqrt2Div2),
@@ -96,8 +90,6 @@ void FlowerParticleSystem::draw()
     ofEnableNormalizedTexCoords();
     
 	ofSetColor(255);
-    
-//    ofColor(255,255,255);
     for(int i = 0; i < FLOWER_COUNT; i++)
     {
         mPetalImgs[mBlossoms[i].mImgIndex].getTextureReference().bind();
