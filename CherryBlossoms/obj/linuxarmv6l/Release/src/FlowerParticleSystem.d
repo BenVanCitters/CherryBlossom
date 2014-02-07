@@ -378,13 +378,7 @@ obj/linuxarmv6l/Release/src/FlowerParticleSystem.o: \
  ../../../libs/openFrameworks/video/ofVideoPlayer.h \
  ../../../libs/openFrameworks/video/ofGstVideoPlayer.h \
  ../../../libs/openFrameworks/3d/ofCamera.h \
- ../../../libs/openFrameworks/3d/ofEasyCam.h \
- ../../../addons/ofxMSAFluid/src/MSAFluidSolver.h \
- ../../../addons/ofxMSACore/src/MSACore.h \
- ../../../addons/ofxMSACore/src/MSACore-OF.h \
- ../../../addons/ofxMSACore/src/MSACoreCommon.h \
- ../../../addons/ofxMSACore/src/MSACoreMath.h \
- ../../../addons/ofxMSACore/src/MSACoreGL.h
+ ../../../libs/openFrameworks/3d/ofEasyCam.h
 
 src/FlowerParticleSystem.h:
 
@@ -1189,15 +1183,3 @@ src/BlossomParticle.h:
 ../../../libs/openFrameworks/3d/ofCamera.h:
 
 ../../../libs/openFrameworks/3d/ofEasyCam.h:
-
-../../../addons/ofxMSAFluid/src/MSAFluidSolver.h:
-
-../../../addons/ofxMSACore/src/MSACore.h:
-
-../../../addons/ofxMSACore/src/MSACore-OF.h:
-
-../../../addons/ofxMSACore/src/MSACoreCommon.h:
-
-../../../addons/ofxMSACore/src/MSACoreMath.h:
-
-../../../addons/ofxMSACore/src/MSACoreGL.h:

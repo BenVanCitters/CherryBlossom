@@ -1,11 +1,8 @@
 #pragma once
 
 
-//#include "MSATimer.h"
-#include "ParticleSystem.h"
 
 #include "ofMain.h"
-//#include "OpticalFlowGenerator.h"
 #include "FlowerParticleSystem.h"
 
 // comment this line out if you don't wanna use TUIO

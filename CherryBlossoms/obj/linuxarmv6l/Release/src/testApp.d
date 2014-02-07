@@ -1,8 +1,4 @@
 obj/linuxarmv6l/Release/src/testApp.o: src/testApp.cpp src/testApp.h \
- ../../../addons/ofxMSAFluid/src/MSAFluid.h \
- ../../../addons/ofxMSAFluid/src/MSAFluidSolver.h \
- ../../../addons/ofxMSACore/src/MSACore.h \
- ../../../addons/ofxMSACore/src/MSACore-OF.h \
  ../../../libs/openFrameworks/ofMain.h \
  ../../../libs/openFrameworks/utils/ofConstants.h \
  /opt/vc/include/bcm_host.h \
@@ -381,24 +377,10 @@ obj/linuxarmv6l/Release/src/testApp.o: src/testApp.cpp src/testApp.h \
  ../../../libs/openFrameworks/video/ofVideoPlayer.h \
  ../../../libs/openFrameworks/video/ofGstVideoPlayer.h \
  ../../../libs/openFrameworks/3d/ofCamera.h \
- ../../../libs/openFrameworks/3d/ofEasyCam.h \
- ../../../addons/ofxMSACore/src/MSACoreCommon.h \
- ../../../addons/ofxMSACore/src/MSACoreMath.h \
- ../../../addons/ofxMSACore/src/MSACoreGL.h \
- ../../../addons/ofxMSAFluid/src/MSAFluidDrawerGl-OF.h \
- ../../../addons/ofxMSAFluid/src/MSAFluidDrawerBase.h \
- src/ParticleSystem.h src/Particle.h src/FlowerParticleSystem.h \
+ ../../../libs/openFrameworks/3d/ofEasyCam.h src/FlowerParticleSystem.h \
  src/BlossomParticle.h
 
 src/testApp.h:
-
-../../../addons/ofxMSAFluid/src/MSAFluid.h:
-
-../../../addons/ofxMSAFluid/src/MSAFluidSolver.h:
-
-../../../addons/ofxMSACore/src/MSACore.h:
-
-../../../addons/ofxMSACore/src/MSACore-OF.h:
 
 ../../../libs/openFrameworks/ofMain.h:
 
@@ -1199,20 +1181,6 @@ src/testApp.h:
 ../../../libs/openFrameworks/3d/ofCamera.h:
 
 ../../../libs/openFrameworks/3d/ofEasyCam.h:
-
-../../../addons/ofxMSACore/src/MSACoreCommon.h:
-
-../../../addons/ofxMSACore/src/MSACoreMath.h:
-
-../../../addons/ofxMSACore/src/MSACoreGL.h:
-
-../../../addons/ofxMSAFluid/src/MSAFluidDrawerGl-OF.h:
-
-../../../addons/ofxMSAFluid/src/MSAFluidDrawerBase.h:
-
-src/ParticleSystem.h:
-
-src/Particle.h:
 
 src/FlowerParticleSystem.h:
 

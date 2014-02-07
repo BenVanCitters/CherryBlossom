@@ -17,7 +17,7 @@ void testApp::setup()
 
 	
 	windowResized(ofGetWidth(), ofGetHeight());		// force this at start (cos I don't think it is called)
-	pMouse = msa::getWindowCenter();
+	//pMouse = msa::getWindowCenter();
 	
 	ofEnableAlphaBlending();
 	ofSetBackgroundAuto(false);

@@ -12,7 +12,7 @@
 #include <iostream>
 #include "BlossomParticle.h"
 
-#define FLOWER_COUNT 50
+#define FLOWER_COUNT 500
 #define FLOWER_IMG_COUNT 5
 
 class FlowerParticleSystem
