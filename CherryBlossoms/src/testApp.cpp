@@ -48,6 +48,7 @@ void testApp::draw()
     
     ofPushMatrix();
     
+
     ofTranslate(ofGetScreenWidth()/2-1024/2,
                 ofGetScreenHeight()/2-768/2.
                 -100);
@@ -56,14 +57,14 @@ void testApp::draw()
     mFuji.unbind();
 
     ofTranslate(0,0,1);
-    mHex.bind();
-    mRect.draw();
-    mHex.unbind();
+  //  mHex.bind();
+    //mRect.draw();
+    //mHex.unbind();
 
     ofTranslate(0,0,1);
-    mGround.bind();
-    mRect.draw();
-    mGround.unbind();
+//    mGround.bind();
+  //  mRect.draw();
+    //mGround.unbind();
     
     ofTranslate(0,0,1);
     mTree.bind();
