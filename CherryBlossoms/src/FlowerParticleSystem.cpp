@@ -89,6 +89,7 @@ void FlowerParticleSystem::draw()
     ofEnableAlphaBlending();
     ofEnableNormalizedTexCoords();
     
+    ofPushMatrix();
 	ofSetColor(255);
     for(int i = 0; i < FLOWER_COUNT; i++)
     {
@@ -96,6 +97,7 @@ void FlowerParticleSystem::draw()
         drawBlossom(&mBlossoms[i],tm);
         mPetalImgs[mBlossoms[i].mImgIndex].getTextureReference().unbind();
     }
+    ofPopMatrix();
 }
 
 void FlowerParticleSystem::drawBlossom(BlossomParticle* b, float tm)
