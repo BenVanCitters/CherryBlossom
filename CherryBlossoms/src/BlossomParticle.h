@@ -17,7 +17,7 @@ class BlossomParticle
 public:
     
     BlossomParticle();
-    BlossomParticle(int imgCount);
+    BlossomParticle(int imgCount, ofVec3f pos);
     void draw();
     void update();
 

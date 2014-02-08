@@ -13,10 +13,7 @@ static const float FLUID_FORCE = 0.6f;
 FlowerParticleSystem::FlowerParticleSystem()
 {
     initVBO();
-    for(int i = 0; i < FLOWER_COUNT; i++)
-    {
-        mBlossoms[i] = BlossomParticle(FLOWER_IMG_COUNT);
-    }
+
     
     for(int i = 0; i < FLOWER_IMG_COUNT; i++)
     {
@@ -24,10 +21,45 @@ FlowerParticleSystem::FlowerParticleSystem()
         sStream << "blossomImages/sakura" << (i+1) << ".png";
         mPetalImgs[i].loadImage(sStream.str());
     }
+    
+    ofImage treeMask;
+    treeMask.loadImage("backgroundImages/1080/tree_nodes.png");
+    //for each pixel add the position to the maks
+    unsigned char* pixels = treeMask.getPixels();
+    int curIndex = 0;
+    for(int j = 0; j < treeMask.height; j++)
+    {
+        for(int i = 0; i < treeMask.width; i++)
+        {
+            if(pixels[curIndex*4+3] > 0)
+            {
+                ofVec3f pos(i,j,0);
+                mTreePositions.push_back(pos);
+            }
+            curIndex++;
+        }
+    }
+    
+    for(int i = 0; i < FLOWER_COUNT; i++)
+    {
+        ofVec3f newPos;
+        getNewBlossomPosition(&newPos);
+        mBlossoms[i] = BlossomParticle(FLOWER_IMG_COUNT,newPos);
+    }
+}
+
+void FlowerParticleSystem::getNewBlossomPosition(ofVec3f* pos)
+{
+    int randIndex = (int)(mTreePositions.size() * ofRandom(1.f));
+    ofVec3f vPos = mTreePositions[randIndex];
+    pos->x = vPos.x;
+    pos->y = vPos.y;
+    pos->z = vPos.z;
 }
 
 void FlowerParticleSystem::update()
 {
+    float tm = ofGetElapsedTimef();
     ofVec2f windowSize = ofGetWindowSize();
     ofVec2f windowTrans = 1.f / windowSize;
     ofVec2f gravity(0,6);
@@ -37,7 +69,8 @@ void FlowerParticleSystem::update()
     {
         if( mBlossoms[i].mState == blossomStateFalling)
         {
-            mBlossoms[i].mVel += gravity/mBlossoms[i].mMass;
+            mBlossoms[i].mVel += 1*ofSignedNoise(mBlossoms[i].mPos.x,mBlossoms[i].mPos.y,mBlossoms[i].mPos.z,tm/150.f)/mBlossoms[i].mMass;
+            mBlossoms[i].mVel += (1.f/95.f)*gravity/mBlossoms[i].mMass;
             mBlossoms[i].mPos +=  mBlossoms[i].mVel;
             
             if(mBlossoms[i].mPos.y > windowSize.y ||
@@ -45,7 +78,9 @@ void FlowerParticleSystem::update()
                mBlossoms[i].mPos.y < 0 ||
                mBlossoms[i].mPos.x < 0)
             {
-                mBlossoms[i] = BlossomParticle(FLOWER_IMG_COUNT);
+                ofVec3f newPos;
+                getNewBlossomPosition(&newPos);
+                mBlossoms[i] = BlossomParticle(FLOWER_IMG_COUNT,newPos);
             }
         }
         mBlossoms[i].update();
@@ -104,7 +139,8 @@ void FlowerParticleSystem::drawBlossom(BlossomParticle* b, float tm)
 {
     ofSetColor(255,255,255);
     ofPushMatrix();
-    ofTranslate(b->mPos);
+    ofVec3f nPos = b->mPos/ofVec3f(1920,1080,1) *ofGetWindowSize();
+    ofTranslate(nPos);
     if(b->mState == blossomStateFalling)
     {
         ofRotateX(b->mRots.x*tm);

@@ -13,19 +13,19 @@ BlossomParticle::BlossomParticle()
     
 }
 
-BlossomParticle::BlossomParticle(int imgCount)
+BlossomParticle::BlossomParticle(int imgCount, ofVec3f pos)
 {
     mState = blossomStateGrowing;
-    float maxRSpd = 50;
+    float maxRSpd = 70;
     mRots = ofVec3f(ofRandom(maxRSpd*2)-maxRSpd,
                     ofRandom(maxRSpd*2)-maxRSpd,
                     ofRandom(maxRSpd*2)-maxRSpd);
     mImgIndex = (int)(ofRandom(imgCount));
-    mPos = ofVec3f(ofRandom(ofGetWindowWidth()),ofRandom(600),1200-ofRandom(4000) );
+    mPos = pos; //ofVec3f(ofRandom(ofGetWindowWidth()),ofRandom(600),1200-ofRandom(4000) );
     mMass = 1+ofRandom(.5f);
     
     float tm = ofGetElapsedTimef();
-    mGrowDur =ofRandom(10);
+    mGrowDur =ofRandom(30);
     mGrowStopTime = tm+ mGrowDur;
 //    mWaitStopTime
 //    float sqrt2Div2 = sqrt(2.f)/2.f;

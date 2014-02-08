@@ -15,6 +15,8 @@
 #define FLOWER_COUNT 500
 #define FLOWER_IMG_COUNT 5
 
+using namespace std;
+
 class FlowerParticleSystem
 {
 public:
@@ -28,8 +30,12 @@ public:
 private:
     void drawBlossom(BlossomParticle* b, float tm);
     void initVBO();
+    void getNewBlossomPosition(ofVec3f* pos);
+    
     BlossomParticle mBlossoms[FLOWER_COUNT];
     ofVbo mQuad;
+    vector<ofVec3f> mTreePositions;
+    
 };
 
 #endif /* defined(__CherryBlossoms__FlowerParticleSystem__) */
