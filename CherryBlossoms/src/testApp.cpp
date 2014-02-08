@@ -57,31 +57,31 @@ void testApp::draw()
 //                ofGetMouseY(),
 //                0);
     ofPushMatrix();
-    ofSetColor(255,255,255,255);
-    mFuji.bind();
-    mRect.draw();
-    mFuji.unbind();
+//    ofSetColor(255,255,255,255);
+//    mFuji.bind();
+//    mRect.draw();
+//    mFuji.unbind();
     ofPopMatrix();
     
     ofTranslate(0,0,10);
     ofPushMatrix();
-    ofSetColor(255,255,255,100);
-    mHex.bind();
-    mRect.draw();
-    mHex.unbind();
+//    ofSetColor(255,255,255,100);
+//    mHex.bind();
+//    mRect.draw();
+//    mHex.unbind();
     ofPopMatrix();
     
     ofTranslate(0,0,10);
     ofPushMatrix();
-    ofSetColor(255,255,255,255);
-    mGround.bind();
-    mRect.draw();
-    mGround.unbind();
+  //  ofSetColor(255,255,255,255);
+   // mGround.bind();
+   // mRect.draw();
+    //mGround.unbind();
     ofPopMatrix();
     
     ofTranslate(0,0,10);
     ofPushMatrix();
-    ofSetColor(255,255,255,255);
+ //   ofSetColor(255,255,255,255);
     mTree.bind();
     mRect.draw();
     mTree.unbind();
