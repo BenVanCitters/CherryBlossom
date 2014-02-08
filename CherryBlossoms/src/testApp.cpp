@@ -49,11 +49,10 @@ void testApp::draw()
     ofPushMatrix();
     
 
-    ofTranslate(300,
-                0,
-                -100);
+    ofTranslate(ofGetMouseX(),
+                ofGetMouseY(),
+                0);
     ofPushMatrix();
-    ofTranslate(-500,-300);
     mFuji.bind();
     mRect.draw();
     mFuji.unbind();
@@ -61,7 +60,6 @@ void testApp::draw()
     
     ofTranslate(0,0,1);
     ofPushMatrix();
-    ofTranslate(500,-300);
     mHex.bind();
     mRect.draw();
     mHex.unbind();
@@ -69,7 +67,6 @@ void testApp::draw()
     
     ofTranslate(0,0,1);
     ofPushMatrix();
-    ofTranslate(-500,300);
     mGround.bind();
     mRect.draw();
     mGround.unbind();
@@ -77,7 +74,6 @@ void testApp::draw()
     
     ofTranslate(0,0,1);
     ofPushMatrix();
-    ofTranslate(500,300);
     mTree.bind();
     mRect.draw();
     mTree.unbind();
