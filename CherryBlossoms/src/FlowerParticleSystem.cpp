@@ -14,7 +14,7 @@ FlowerParticleSystem::FlowerParticleSystem()
 {
     initVBO();
 
-    
+    //load all flower images
     for(int i = 0; i < FLOWER_IMG_COUNT; i++)
     {
         std::stringstream sStream;
@@ -73,10 +73,10 @@ void FlowerParticleSystem::update()
             mBlossoms[i].mVel += (1.f/95.f)*gravity/mBlossoms[i].mMass;
             mBlossoms[i].mPos +=  mBlossoms[i].mVel;
             
-            if(mBlossoms[i].mPos.y > windowSize.y ||
-               mBlossoms[i].mPos.x > windowSize.x ||
+            if(mBlossoms[i].mPos.y > windowSize.y+50 ||
+               mBlossoms[i].mPos.x > windowSize.x+50 ||
                mBlossoms[i].mPos.y < 0 ||
-               mBlossoms[i].mPos.x < 0)
+               mBlossoms[i].mPos.x < 0 - 50)
             {
                 ofVec3f newPos;
                 getNewBlossomPosition(&newPos);
@@ -88,13 +88,13 @@ void FlowerParticleSystem::update()
 }
 void FlowerParticleSystem::initVBO()
 {
-    
+    float szMult = 2.5f;
     float sqrt2Div2 = sqrt(2.f)/2.f;
     const ofIndexType Faces[] = {0,1,2,
         0,2,3,
         0,3,4,
         0,4,1};
-    
+    sqrt2Div2 *= szMult;
     ofVec3f v[5]= {ofVec3f(0,0,0),
         ofVec3f(-sqrt2Div2,sqrt2Div2, sqrt2Div2),
         ofVec3f(sqrt2Div2,sqrt2Div2, sqrt2Div2),
@@ -147,11 +147,16 @@ void FlowerParticleSystem::drawBlossom(BlossomParticle* b, float tm)
         ofRotateY(b->mRots.y*tm);
         ofRotateZ(b->mRots.z*tm);
     }
-    else if(b->mState == blossomStateGrowing)
+    else if(b->mState == blossomStateGrowing || b->mState == blossomStateWaiting)
     {
-        float pct = b->getGrowPct(tm);
-        
-        ofScale(pct,pct, MIN(pct*4,1));
+        ofRotateX(b->mRots.x*b->mWaitStopTime);
+        ofRotateY(b->mRots.y*b->mWaitStopTime);
+        ofRotateZ(b->mRots.z*b->mWaitStopTime);
+        if(b->mState == blossomStateGrowing)
+        {
+            float pct = b->getGrowPct(tm);
+            ofScale(pct,pct, MIN(pct*4,1));
+        }
     }
     float scl = 20.f;
     ofScale(scl,scl,scl);

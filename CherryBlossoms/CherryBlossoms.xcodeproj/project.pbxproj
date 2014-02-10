@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2DE5A80718A6DC8B0066B7BB /* CloudParticle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2DE5A80318A6DC8B0066B7BB /* CloudParticle.cpp */; };
+		2DE5A80818A6DC8B0066B7BB /* CloudParticleSystem.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 2DE5A80518A6DC8B0066B7BB /* CloudParticleSystem.cpp */; };
 		5EB9303FA9B240750638AE7C /* MSAFluidSolver.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 5DAA01DF76EA921C7DA7405D /* MSAFluidSolver.cpp */; };
 		825FA11382B216421AC896A6 /* MSAFluidDrawerBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0E48FD05BDA9491DCA86AAA /* MSAFluidDrawerBase.cpp */; };
 		84564E7018484B1000091CEF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 84564E6918484B1000091CEF /* main.cpp */; };
@@ -85,6 +87,10 @@
 
 /* Begin PBXFileReference section */
 		1F197522BC00AB72C1A74679 /* MSAFluidParticleUpdater.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = MSAFluidParticleUpdater.h; path = ../../../addons/ofxMSAFluid/src/MSAFluidParticleUpdater.h; sourceTree = SOURCE_ROOT; };
+		2DE5A80318A6DC8B0066B7BB /* CloudParticle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudParticle.cpp; sourceTree = "<group>"; };
+		2DE5A80418A6DC8B0066B7BB /* CloudParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudParticle.h; sourceTree = "<group>"; };
+		2DE5A80518A6DC8B0066B7BB /* CloudParticleSystem.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CloudParticleSystem.cpp; sourceTree = "<group>"; };
+		2DE5A80618A6DC8B0066B7BB /* CloudParticleSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CloudParticleSystem.h; sourceTree = "<group>"; };
 		58B94FFF012004B3A4E58F32 /* MSAFluid.h */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 30; name = MSAFluid.h; path = ../../../addons/ofxMSAFluid/src/MSAFluid.h; sourceTree = SOURCE_ROOT; };
 		5DAA01DF76EA921C7DA7405D /* MSAFluidSolver.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = MSAFluidSolver.cpp; path = ../../../addons/ofxMSAFluid/src/MSAFluidSolver.cpp; sourceTree = SOURCE_ROOT; };
 		84564E6918484B1000091CEF /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -779,6 +785,10 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				2DE5A80318A6DC8B0066B7BB /* CloudParticle.cpp */,
+				2DE5A80418A6DC8B0066B7BB /* CloudParticle.h */,
+				2DE5A80518A6DC8B0066B7BB /* CloudParticleSystem.cpp */,
+				2DE5A80618A6DC8B0066B7BB /* CloudParticleSystem.h */,
 				84564E6918484B1000091CEF /* main.cpp */,
 				84AFB4E1187DE8FA00BEA084 /* FlowerParticleSystem.cpp */,
 				84AFB4E2187DE8FA00BEA084 /* FlowerParticleSystem.h */,
@@ -889,6 +899,7 @@
 				825FA11382B216421AC896A6 /* MSAFluidDrawerBase.cpp in Sources */,
 				84CDEC5518678C93005D7F5D /* ETF.cpp in Sources */,
 				84CDE97A18678C2F005D7F5D /* ofxCvFloatImage.cpp in Sources */,
+				2DE5A80718A6DC8B0066B7BB /* CloudParticle.cpp in Sources */,
 				84CDEC5D18678C93005D7F5D /* RunningBackground.cpp in Sources */,
 				84CDEC5918678C93005D7F5D /* Distance.cpp in Sources */,
 				84CDE97918678C2F005D7F5D /* ofxCvContourFinder.cpp in Sources */,
@@ -909,6 +920,7 @@
 				84CDE97B18678C2F005D7F5D /* ofxCvGrayscaleImage.cpp in Sources */,
 				84CDEC5F18678C93005D7F5D /* Utilities.cpp in Sources */,
 				84564E7018484B1000091CEF /* main.cpp in Sources */,
+				2DE5A80818A6DC8B0066B7BB /* CloudParticleSystem.cpp in Sources */,
 				84A481EC189B7A450003D479 /* testApp.cpp in Sources */,
 				84CDE97C18678C2F005D7F5D /* ofxCvHaarFinder.cpp in Sources */,
 				84CDEC5618678C93005D7F5D /* fdog.cpp in Sources */,

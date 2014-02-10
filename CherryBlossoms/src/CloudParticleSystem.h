@@ -10,15 +10,22 @@
 #define __CherryBlossoms__CloudParticleSystem__
 
 #include <iostream>
+
+#include "ofMain.h"
 #include "CloudParticle.h"
 
 #define CLOUD_COUNT 5
+#define CLOUD_IMAGE_COUNT 3
 
 using namespace std;
 class CloudParticleSystem
 {
-public:
+    
     CloudParticle mClouds[CLOUD_COUNT];
+    ofVboMesh mRect;
+    ofImage mCloudImgs[3];
+public:
+
 
     CloudParticleSystem();
     void update();

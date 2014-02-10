@@ -12,7 +12,7 @@
 #include <iostream>
 #include "BlossomParticle.h"
 
-#define FLOWER_COUNT 500
+#define FLOWER_COUNT 100
 #define FLOWER_IMG_COUNT 5
 
 using namespace std;
@@ -26,12 +26,13 @@ public:
     void addParticle();
 	void addParticle(const ofVec3f &pos);
     
-    ofImage mPetalImgs[5];
+    
 private:
     void drawBlossom(BlossomParticle* b, float tm);
     void initVBO();
     void getNewBlossomPosition(ofVec3f* pos);
     
+    ofImage mPetalImgs[5];
     BlossomParticle mBlossoms[FLOWER_COUNT];
     ofVbo mQuad;
     vector<ofVec3f> mTreePositions;

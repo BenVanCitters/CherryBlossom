@@ -10,11 +10,14 @@
 #define __CherryBlossoms__CloudParticle__
 
 #include <iostream>
+#include "ofMain.h"
 
 class CloudParticle
 {
-    float mPos[3];
-    float mVel[3];
+public:
+    
+    ofVec3f mPos;
+    ofVec3f mVel;
     int mCloudImageIndex;
 };
 

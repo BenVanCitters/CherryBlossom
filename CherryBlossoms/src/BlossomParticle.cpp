@@ -27,6 +27,7 @@ BlossomParticle::BlossomParticle(int imgCount, ofVec3f pos)
     float tm = ofGetElapsedTimef();
     mGrowDur =ofRandom(30);
     mGrowStopTime = tm+ mGrowDur;
+    mWaitStopTime = mGrowStopTime + ofRandom(15);
 //    mWaitStopTime
 //    float sqrt2Div2 = sqrt(2.f)/2.f;
 //    const ofIndexType Faces[] = {0,1,2,
@@ -70,7 +71,6 @@ void BlossomParticle::update()
                 if(tm > mGrowStopTime)
                 {
                     mState = blossomStateWaiting;
-                    mWaitStopTime = tm + ofRandom(2);
                 }
                 break;
             case blossomStateWaiting:

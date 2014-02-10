@@ -6,10 +6,12 @@ void testApp::setup()
     ofLog(OF_LOG_NOTICE, "loading the images...");
 //    mTreeMask.loadImage("backgroundImages/1080/tree_nodes.png");
 
+    
+    mShowHex=mShowGround=mShowFuji=mShowTree=true;
 	mTree.loadImage("backgroundImages/1080/tree_.png");
     mFuji.loadImage("backgroundImages/1080/mtn.png");
     mGround.loadImage("backgroundImages/1080/land.png");
-    mHex.loadImage("backgroundImages/1080/hex_alpha_grad.png");
+    mHex.loadImage("backgroundImages/1080/hex.png");
     
     float wxh[2]={ofGetScreenWidth(),ofGetScreenHeight()};
     
@@ -42,6 +44,7 @@ void testApp::setup()
 void testApp::update()
 {
     mFlowerParticles.update();
+    mCloudParticles.update();
 }
 
 void testApp::draw()
@@ -56,39 +59,46 @@ void testApp::draw()
 //    ofTranslate(ofGetMouseX(),
 //                ofGetMouseY(),
 //                0);
-    ofPushMatrix();
-    ofSetColor(255,255,255,255);
-    mFuji.bind();
-    mRect.draw();
-    mFuji.unbind();
-    ofPopMatrix();
-    
-    ofTranslate(0,0,10);
-    ofPushMatrix();
-    ofSetColor(255,255,255,100);
-    mHex.bind();
-    mRect.draw();
-    mHex.unbind();
-    ofPopMatrix();
-    
-    ofTranslate(0,0,10);
-    ofPushMatrix();
-    ofSetColor(255,255,255,255);
-    mGround.bind();
-    mRect.draw();
-    mGround.unbind();
-    ofPopMatrix();
-    
-    ofTranslate(0,0,10);
-    ofPushMatrix();
-    ofSetColor(255,255,255,255);
-    mTree.bind();
-    mRect.draw();
-    mTree.unbind();
-    ofPopMatrix();
-    
-    
-    
+    if(mShowFuji)
+    {
+        ofPushMatrix();
+        ofSetColor(255,255,255,255);
+        mFuji.bind();
+        mRect.draw();
+        mFuji.unbind();
+        ofPopMatrix();
+    }
+    if(mShowHex)
+    {
+        ofTranslate(0,0,10);
+        ofPushMatrix();
+        ofSetColor(255,255,255,100);
+        mHex.bind();
+        mRect.draw();
+        mHex.unbind();
+        ofPopMatrix();
+    }
+    if(mShowGround)
+    {
+        ofTranslate(0,0,10);
+        ofPushMatrix();
+        ofSetColor(255,255,255,255);
+        mGround.bind();
+        mRect.draw();
+        mGround.unbind();
+        ofPopMatrix();
+    }
+    if(mShowTree)
+    {
+        ofTranslate(0,0,10);
+        ofPushMatrix();
+        ofSetColor(255,255,255,255);
+        mTree.bind();
+        mRect.draw();
+        mTree.unbind();
+        ofPopMatrix();
+    }
+    mCloudParticles.draw();
 	mFlowerParticles.draw();
     ofPopMatrix();
 }
@@ -101,6 +111,20 @@ void testApp::keyPressed  (int key)
 		case 'f':
 			ofToggleFullscreen();
 			break;
+        
+        case '1':
+            mShowHex = !mShowHex;
+			break;
+        case '2':
+            mShowGround = !mShowGround;
+			break;
+        case '3':
+            mShowFuji = !mShowFuji;
+			break;
+        case '4':
+            mShowTree = !mShowTree;
+			break;
+            
         default:
             break;
     }
