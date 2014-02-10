@@ -25,7 +25,7 @@ public:
     void draw();
     void addParticle();
 	void addParticle(const ofVec3f &pos);
-    
+    bool mShowFlowerStats;
     
 private:
     void drawBlossom(BlossomParticle* b, float tm);
@@ -36,7 +36,7 @@ private:
     BlossomParticle mBlossoms[FLOWER_COUNT];
     ofVbo mQuad;
     vector<ofVec3f> mTreePositions;
-    
+
 };
 
 #endif /* defined(__CherryBlossoms__FlowerParticleSystem__) */

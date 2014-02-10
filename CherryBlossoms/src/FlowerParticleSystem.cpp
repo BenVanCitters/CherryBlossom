@@ -13,7 +13,7 @@ static const float FLUID_FORCE = 0.6f;
 FlowerParticleSystem::FlowerParticleSystem()
 {
     initVBO();
-
+    mShowFlowerStats = false;
     //load all flower images
     for(int i = 0; i < FLOWER_IMG_COUNT; i++)
     {
@@ -126,13 +126,37 @@ void FlowerParticleSystem::draw()
     
     ofPushMatrix();
 	ofSetColor(255);
+    int waitinCount = 0, growingCount = 0, fallingcount = 0;
     for(int i = 0; i < FLOWER_COUNT; i++)
     {
+        switch (mBlossoms[i].mState) {
+            case blossomStateFalling:
+                fallingcount++;
+                break;
+            case blossomStateGrowing:
+                growingCount++;
+                break;
+            case blossomStateWaiting:
+                waitinCount++;
+                break;
+            default:
+                break;
+        }
+    }
+    stringstream s;
+    s <<"growing:" << growingCount << " waiting: " << waitinCount << " falling: " << fallingcount;
+    string flowerStats = s.str();
+    
+    for(int i = 0; i < FLOWER_COUNT; i++)
+    {
+        
         mPetalImgs[mBlossoms[i].mImgIndex].getTextureReference().bind();
         drawBlossom(&mBlossoms[i],tm);
         mPetalImgs[mBlossoms[i].mImgIndex].getTextureReference().unbind();
     }
     ofPopMatrix();
+    if(mShowFlowerStats)
+        ofDrawBitmapString(flowerStats, 50,50);
 }
 
 void FlowerParticleSystem::drawBlossom(BlossomParticle* b, float tm)

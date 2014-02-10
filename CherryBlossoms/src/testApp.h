@@ -20,6 +20,7 @@ public:
 
     FlowerParticleSystem mFlowerParticles;
     CloudParticleSystem mCloudParticles;
+    
     ofVboMesh mRect;
     ofImage mTree;
     bool mShowTree;

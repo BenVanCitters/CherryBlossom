@@ -5,7 +5,6 @@ void testApp::setup()
 {
     ofLog(OF_LOG_NOTICE, "loading the images...");
 //    mTreeMask.loadImage("backgroundImages/1080/tree_nodes.png");
-
     
     ofEnableAlphaBlending();
     mShowHex=mShowGround=mShowFuji=mShowTree=true;
@@ -50,7 +49,7 @@ void testApp::update()
 
 void testApp::draw()
 {
-    ofBackground(0,0,0);
+    ofBackground(200,200,225);
     ofEnableAlphaBlending();
     ofEnableNormalizedTexCoords();
     
@@ -60,6 +59,13 @@ void testApp::draw()
 //    ofTranslate(ofGetMouseX(),
 //                ofGetMouseY(),
 //                0);
+    
+    ofPushMatrix();
+
+    ofTranslate(0,0,500);
+    mCloudParticles.draw();
+    ofPopMatrix();
+    
     if(mShowFuji)
     {
         ofPushMatrix();
@@ -99,9 +105,10 @@ void testApp::draw()
         mTree.unbind();
         ofPopMatrix();
     }
-    mCloudParticles.draw();
+
     mFlowerParticles.draw();
     ofPopMatrix();
+
 }
 
 
@@ -125,7 +132,9 @@ void testApp::keyPressed  (int key)
         case '4':
             mShowTree = !mShowTree;
 			break;
-            
+        case 'q':
+            mFlowerParticles.mShowFlowerStats = !mFlowerParticles.mShowFlowerStats;
+			break;
         default:
             break;
     }
