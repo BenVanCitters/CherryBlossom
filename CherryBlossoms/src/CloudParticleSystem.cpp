@@ -68,6 +68,7 @@ void CloudParticleSystem::update()
 }
 void CloudParticleSystem::draw()
 {
+    ofSetColor(255,255,255,50);
     for(int i = 0; i < CLOUD_COUNT; i++)
     {
         ofPushMatrix();

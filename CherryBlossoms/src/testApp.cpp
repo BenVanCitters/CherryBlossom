@@ -7,8 +7,9 @@ void testApp::setup()
 //    mTreeMask.loadImage("backgroundImages/1080/tree_nodes.png");
 
     
+    ofEnableAlphaBlending();
     mShowHex=mShowGround=mShowFuji=mShowTree=true;
-	mTree.loadImage("backgroundImages/1080/tree_.png");
+    mTree.loadImage("backgroundImages/1080/tree_.png");
     mFuji.loadImage("backgroundImages/1080/mtn.png");
     mGround.loadImage("backgroundImages/1080/land.png");
     mHex.loadImage("backgroundImages/1080/hex.png");
@@ -36,7 +37,7 @@ void testApp::setup()
 
 //	windowResized(ofGetWidth(), ofGetHeight());		// force this at start (cos I don't think it is called)
 	
-//	ofEnableAlphaBlending();
+	ofEnableAlphaBlending();
 	ofSetBackgroundAuto(false);
 }
 
@@ -50,8 +51,8 @@ void testApp::update()
 void testApp::draw()
 {
     ofBackground(0,0,0);
-//    ofEnableAlphaBlending();
-//    ofEnableNormalizedTexCoords();
+    ofEnableAlphaBlending();
+    ofEnableNormalizedTexCoords();
     
     ofPushMatrix();
     
@@ -99,7 +100,7 @@ void testApp::draw()
         ofPopMatrix();
     }
     mCloudParticles.draw();
-	mFlowerParticles.draw();
+    mFlowerParticles.draw();
     ofPopMatrix();
 }
 

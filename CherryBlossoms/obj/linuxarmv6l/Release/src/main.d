@@ -378,7 +378,7 @@ obj/linuxarmv6l/Release/src/main.o: src/main.cpp src/testApp.h \
  ../../../libs/openFrameworks/video/ofGstVideoPlayer.h \
  ../../../libs/openFrameworks/3d/ofCamera.h \
  ../../../libs/openFrameworks/3d/ofEasyCam.h src/FlowerParticleSystem.h \
- src/BlossomParticle.h
+ src/BlossomParticle.h src/CloudParticleSystem.h src/CloudParticle.h
 
 src/testApp.h:
 
@@ -1185,3 +1185,7 @@ src/testApp.h:
 src/FlowerParticleSystem.h:
 
 src/BlossomParticle.h:
+
+src/CloudParticleSystem.h:
+
+src/CloudParticle.h:
