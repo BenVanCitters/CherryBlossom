@@ -26,9 +26,10 @@ public:
     void addParticle();
 	void addParticle(const ofVec3f &pos);
     bool mShowFlowerStats;
+    bool mUseTextures;
     
 private:
-    void drawBlossom(BlossomParticle* b, float tm);
+    void drawBlossom(BlossomParticle* b, long long tm);
     void initVBO();
     void getNewBlossomPosition(ofVec3f* pos);
     

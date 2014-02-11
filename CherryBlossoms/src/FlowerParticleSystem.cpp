@@ -13,6 +13,7 @@ static const float FLUID_FORCE = 0.6f;
 FlowerParticleSystem::FlowerParticleSystem()
 {
     initVBO();
+    mUseTextures = true;
     mShowFlowerStats = false;
     //load all flower images
     for(int i = 0; i < FLOWER_IMG_COUNT; i++)
@@ -120,7 +121,7 @@ void FlowerParticleSystem::initVBO()
 }
 void FlowerParticleSystem::draw()
 {
-    float tm = ofGetElapsedTimef();
+    long long tm = ofGetElapsedTimeMillis();
     ofEnableAlphaBlending();
     ofEnableNormalizedTexCoords();
     
@@ -147,19 +148,24 @@ void FlowerParticleSystem::draw()
     s <<"growing:" << growingCount << " waiting: " << waitinCount << " falling: " << fallingcount;
     string flowerStats = s.str();
     
-    for(int i = 0; i < FLOWER_COUNT; i++)
-    {
-        
-        mPetalImgs[mBlossoms[i].mImgIndex].getTextureReference().bind();
-        drawBlossom(&mBlossoms[i],tm);
-        mPetalImgs[mBlossoms[i].mImgIndex].getTextureReference().unbind();
-    }
+    if(mUseTextures)
+        for(int i = 0; i < FLOWER_COUNT; i++)
+        {
+            mPetalImgs[mBlossoms[i].mImgIndex].getTextureReference().bind();
+            drawBlossom(&mBlossoms[i],tm);
+            mPetalImgs[mBlossoms[i].mImgIndex].getTextureReference().unbind();
+        }
+    else
+        for(int i = 0; i < FLOWER_COUNT; i++)
+        {
+            drawBlossom(&mBlossoms[i],tm);
+        }
     ofPopMatrix();
     if(mShowFlowerStats)
         ofDrawBitmapString(flowerStats, 50,50);
 }
 
-void FlowerParticleSystem::drawBlossom(BlossomParticle* b, float tm)
+void FlowerParticleSystem::drawBlossom(BlossomParticle* b, long long tm)
 {
     ofSetColor(255,255,255);
     ofPushMatrix();
@@ -167,15 +173,15 @@ void FlowerParticleSystem::drawBlossom(BlossomParticle* b, float tm)
     ofTranslate(nPos);
     if(b->mState == blossomStateFalling)
     {
-        ofRotateX(b->mRots.x*tm);
-        ofRotateY(b->mRots.y*tm);
-        ofRotateZ(b->mRots.z*tm);
+        ofRotateX(b->mRots.x*tm/1000.f);
+        ofRotateY(b->mRots.y*tm/1000.f);
+        ofRotateZ(b->mRots.z*tm/1000.f);
     }
     else if(b->mState == blossomStateGrowing || b->mState == blossomStateWaiting)
     {
-        ofRotateX(b->mRots.x*b->mWaitStopTime);
-        ofRotateY(b->mRots.y*b->mWaitStopTime);
-        ofRotateZ(b->mRots.z*b->mWaitStopTime);
+        ofRotateX(b->mRots.x*b->mWaitStopTime/1000.f);
+        ofRotateY(b->mRots.y*b->mWaitStopTime/1000.f);
+        ofRotateZ(b->mRots.z*b->mWaitStopTime/1000.f);
         if(b->mState == blossomStateGrowing)
         {
             float pct = b->getGrowPct(tm);
@@ -184,7 +190,10 @@ void FlowerParticleSystem::drawBlossom(BlossomParticle* b, float tm)
     }
     float scl = 20.f;
     ofScale(scl,scl,scl);
-    mQuad.drawElements( GL_TRIANGLES, 12);
+    if(mUseTextures)
+        mQuad.drawElements( GL_TRIANGLE_STRIP, 12);
+    else
+        mQuad.drawElements( GL_LINE_STRIP, 12);
     ofPopMatrix();
 }
 

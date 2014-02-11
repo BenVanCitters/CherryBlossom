@@ -132,6 +132,9 @@ void testApp::keyPressed  (int key)
         case '4':
             mShowTree = !mShowTree;
 			break;
+        case 'w':
+            mFlowerParticles.mUseTextures = !mFlowerParticles.mUseTextures;
+			break;
         case 'q':
             mFlowerParticles.mShowFlowerStats = !mFlowerParticles.mShowFlowerStats;
 			break;

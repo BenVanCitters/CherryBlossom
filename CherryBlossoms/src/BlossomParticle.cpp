@@ -25,9 +25,9 @@ BlossomParticle::BlossomParticle(int imgCount, ofVec3f pos)
     mMass = 1+ofRandom(.5f);
     
     float tm = ofGetElapsedTimef();
-    mGrowDur =ofRandom(30);
+    mGrowDur =ofRandom(30*1000);
     mGrowStopTime = tm+ mGrowDur;
-    mWaitStopTime = mGrowStopTime + ofRandom(15);
+    mWaitStopTime = mGrowStopTime + ofRandom(15*1000);
 //    mWaitStopTime
 //    float sqrt2Div2 = sqrt(2.f)/2.f;
 //    const ofIndexType Faces[] = {0,1,2,
@@ -58,14 +58,15 @@ BlossomParticle::BlossomParticle(int imgCount, ofVec3f pos)
 //    mQuad.setIndexData( Faces, 12, GL_STATIC_DRAW );
 }
 
-float BlossomParticle::getGrowPct(float curTime)
+float BlossomParticle::getGrowPct(long long curTime)
 {
-    return 1.f-(mGrowStopTime-curTime)/mGrowDur;
+    return 1.f-(mGrowStopTime-curTime)*1.f/mGrowDur;
 }
 
 void BlossomParticle::update()
 {
-    float tm = ofGetElapsedTimef();
+    
+    double tm = ofGetElapsedTimeMillis();
     switch(mState){
             case blossomStateGrowing:
                 if(tm > mGrowStopTime)

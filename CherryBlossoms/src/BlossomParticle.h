@@ -21,7 +21,7 @@ public:
     void draw();
     void update();
 
-    float getGrowPct(float curTime);
+    float getGrowPct(long long curTime);
     
     ofVbo mQuad;
     ofVec3f mVel;
@@ -29,9 +29,9 @@ public:
     ofVec3f mRots;
     float mMass;
     
-    float mGrowStopTime;
-    float mGrowDur;
-    float mWaitStopTime;
+    long long mGrowStopTime;
+    long long mGrowDur;
+    long long mWaitStopTime;
     
     int mImgIndex;
     blossomState mState;
