@@ -66,7 +66,7 @@ float BlossomParticle::getGrowPct(long long curTime)
 void BlossomParticle::update()
 {
     
-    double tm = ofGetElapsedTimeMillis();
+    long long tm = ofGetElapsedTimeMillis();
     switch(mState){
             case blossomStateGrowing:
                 if(tm > mGrowStopTime)
