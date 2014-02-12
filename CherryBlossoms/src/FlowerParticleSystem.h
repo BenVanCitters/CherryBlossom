@@ -22,7 +22,7 @@ class FlowerParticleSystem
 public:
     FlowerParticleSystem();
     void update();
-    void draw();
+    void draw(float near_z, float far_z);
     void addParticle();
 	void addParticle(const ofVec3f &pos);
     bool mShowFlowerStats;

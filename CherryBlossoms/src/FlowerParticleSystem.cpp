@@ -34,7 +34,7 @@ FlowerParticleSystem::FlowerParticleSystem()
         {
             if(pixels[curIndex*4+3] > 0)
             {
-                ofVec3f pos(i,j,0);
+                ofVec3f pos(i,j,5);
                 mTreePositions.push_back(pos);
             }
             curIndex++;
@@ -119,7 +119,7 @@ void FlowerParticleSystem::initVBO()
     mQuad.setIndexData( Faces, 12, GL_STATIC_DRAW );
     
 }
-void FlowerParticleSystem::draw()
+void FlowerParticleSystem::draw(float near_z, float far_z)
 {
     long long tm = ofGetElapsedTimeMillis();
     ofEnableAlphaBlending();
@@ -151,9 +151,12 @@ void FlowerParticleSystem::draw()
     if(mUseTextures)
         for(int i = 0; i < FLOWER_COUNT; i++)
         {
-            mPetalImgs[mBlossoms[i].mImgIndex].getTextureReference().bind();
-            drawBlossom(&mBlossoms[i],tm);
-            mPetalImgs[mBlossoms[i].mImgIndex].getTextureReference().unbind();
+            if ((near_z < mBlossoms[i].mPos.z) && (mBlossoms[i].mPos.z <= far_z))
+            {
+                mPetalImgs[mBlossoms[i].mImgIndex].getTextureReference().bind();
+                drawBlossom(&mBlossoms[i],tm);
+                mPetalImgs[mBlossoms[i].mImgIndex].getTextureReference().unbind();
+            }
         }
     else
         for(int i = 0; i < FLOWER_COUNT; i++)

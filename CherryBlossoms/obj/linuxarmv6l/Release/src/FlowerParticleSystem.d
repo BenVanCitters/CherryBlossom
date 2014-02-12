@@ -9,6 +9,7 @@ obj/linuxarmv6l/Release/src/FlowerParticleSystem.o: \
  /opt/vc/include/interface/vcos/vcos_types.h \
  /opt/vc/include/interface/vcos/pthreads/vcos_platform_types.h \
  /opt/vc/include/interface/vcos/vcos_inttypes.h \
+ /opt/vc/include/interface/vcos/vcos_attr.h \
  /opt/vc/include/interface/vcos/vcos_types.h \
  /opt/vc/include/interface/vcos/pthreads/vcos_platform.h \
  /opt/vc/include/interface/vcos/generic/vcos_generic_event_flags.h \
@@ -401,6 +402,8 @@ src/BlossomParticle.h:
 /opt/vc/include/interface/vcos/pthreads/vcos_platform_types.h:
 
 /opt/vc/include/interface/vcos/vcos_inttypes.h:
+
+/opt/vc/include/interface/vcos/vcos_attr.h:
 
 /opt/vc/include/interface/vcos/vcos_types.h:
 

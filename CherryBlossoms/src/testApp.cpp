@@ -95,6 +95,9 @@ void testApp::draw()
         mGround.unbind();
         ofPopMatrix();
     }
+
+    mFlowerParticles.draw(5,500);
+
     if(mShowTree)
     {
         ofTranslate(0,0,10);
@@ -106,7 +109,8 @@ void testApp::draw()
         ofPopMatrix();
     }
 
-    mFlowerParticles.draw();
+    mFlowerParticles.draw(-500, 5);
+
     ofPopMatrix();
 
 }
