@@ -60,7 +60,9 @@ void OpticalFlowGenerator::update()
                  int i = y * mXSteps + x;
                  ofVec2f position(x * mStepSize, y * mStepSize);
                  ofRectangle area(position - ofVec2f(mStepSize, mStepSize) / 2, mStepSize, mStepSize);
-                 mFlowVectors[y][x] = mFlow.getAverageFlowInRegion(area)/5000.f;
+                 mFlowVectors[y][x] = mFlow.getAverageFlowInRegion(area)/4000.f;
+//                 if(mFlowVectors[y][x].length() > 0)
+//                     mFlowVectors[y][x].x = 1;
              }
          }
 
@@ -69,7 +71,7 @@ void OpticalFlowGenerator::update()
 
 void OpticalFlowGenerator::draw()
 {
-    mCam.draw(0, 0);
+//    mCam.draw(0, 0);
     for(int y = 1; y + 1 < mYSteps; y++)
     {
         for(int x = 1; x + 1 < mXSteps; x++)
