@@ -77,7 +77,7 @@ void OpticalFlowGenerator::draw()
         for(int x = 1; x + 1 < mXSteps; x++)
         {
             ofVec2f position(x * mStepSize, y * mStepSize);
-            ofLine(position, position+mFlowVectors[y][x]);
+            ofLine(position, position+mFlowVectors[y][x]*900);
         }
     }
 }

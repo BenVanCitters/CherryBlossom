@@ -42,31 +42,7 @@ void testApp::setup()
 	ofSetVerticalSync(false);
     velocityMult = 1;
 	
-#ifdef USE_GUI 
-	gui.addSlider("fluidCellsX", fluidCellsX, 20, 400);
-	gui.addButton("resizeFluid", resizeFluid);
-    gui.addSlider("colorMult", colorMult, 0, 100);
-    gui.addSlider("velocityMult", velocityMult, 0, 100);
-	gui.addSlider("fs.viscocity", fluidSolver.viscocity, 0.0, 0.01);
-	gui.addSlider("fs.colorDiffusion", fluidSolver.colorDiffusion, 0.0, 0.0003); 
-	gui.addSlider("fs.fadeSpeed", fluidSolver.fadeSpeed, 0.0, 0.1); 
-	gui.addSlider("fs.solverIterations", fluidSolver.solverIterations, 1, 50); 
-	gui.addSlider("fs.deltaT", fluidSolver.deltaT, 0.1, 5);
-	gui.addComboBox("fd.drawMode", (int&)fluidDrawer.drawMode, msa::fluid::getDrawModeTitles());
-	gui.addToggle("fs.doRGB", fluidSolver.doRGB); 
-	gui.addToggle("fs.doVorticityConfinement", fluidSolver.doVorticityConfinement); 
-	gui.addToggle("drawFluid", drawFluid);
-	gui.addToggle("fs.wrapX", fluidSolver.wrap_x);
-	gui.addToggle("fs.wrapY", fluidSolver.wrap_y);
-//    gui.addSlider("tuioXScaler", tuioXScaler, 0, 2);
-//    gui.addSlider("tuioYScaler", tuioYScaler, 0, 2);
-    
-	gui.currentPage().setXMLName("ofxMSAFluidSettings.xml");
-    gui.loadFromXML();
-	gui.setDefaultKeys(true);
-	gui.setAutoSave(true);
-//    gui.show();
-#endif
+    mShowFPS = false;
 	
 	windowResized(ofGetWidth(), ofGetHeight());		// force this at start (cos I don't think it is called)
 	pMouse = msa::getWindowCenter();
@@ -117,32 +93,6 @@ void testApp::update()
 
 }
 
-
-/*
- void testApp::draw()
- {
- //	if(drawFluid)
- //    {
- //        ofClear(255,255,0);
- //		glColor3f(1, 1, 1);
- //		fluidDrawer.draw(0, 0, ofGetWidth(), ofGetHeight());
- //	} else
- //    {
- ////		if(ofGetFrameNum()%5==0)
- //            fadeToColor(1,1, 0, 0.01);
- //	}
- ofBackground(0,0,0);
- 
- //    particleSystem.updateAndDraw(fluidSolver, ofGetWindowSize(), drawFluid);
- mFlowerParticles.draw();
- //	ofDrawBitmapString(sz, 50, 50);
- 
- #ifdef USE_GUI
- gui.draw();
- #endif
- //    mOpticalFlowGenerator.draw();
- }
- */
 
 void testApp::draw()
 {
@@ -211,7 +161,13 @@ void testApp::draw()
     ofTranslate(0,0,10);
 //    mOpticalFlowGenerator.draw();
     ofPopMatrix();
-    
+    if(mShowFPS)
+    {
+        stringstream s;
+        s <<"FPS: " << ofGetFrameRate();
+        string flowerStats = s.str();
+        ofDrawBitmapString(flowerStats, 50,50);
+    }
 }
 
 
@@ -240,6 +196,9 @@ void testApp::keyPressed  (int key)
 			break;
         case 'q':
             mFlowerParticles.mShowFlowerStats = !mFlowerParticles.mShowFlowerStats;
+			break;
+        case 'r':
+            mShowFPS = !mShowFPS;
 			break;
         default:
             break;
@@ -297,7 +256,7 @@ void testApp::addForceFromOpticalFlow()
             ofVec2f pos = ofVec2f(i,j);
             pos += ofVec2f(ofRandom(1),ofRandom(1));
             pos /= flowDimensions;
-            ofVec2f vel = vects[j][i];
+            ofVec2f vel = vects[j][(int)(flowDimensions.x-i-1)];
             float speed = vel.x * vel.x  + vel.y * vel.y * msa::getWindowAspectRatio() * msa::getWindowAspectRatio();    // balance the x and y components of speed with the screen aspect ratio
             if(speed > 0)
             {
@@ -305,7 +264,7 @@ void testApp::addForceFromOpticalFlow()
                 pos.y = ofClamp(pos.y, 0.0f, 1.0f);
 //                pos.x = 1- pos.x;
                 int index = fluidSolver.getIndexForPos(pos);
-                
+                vel.x*=-1;
                 fluidSolver.addForceAtIndex(index, vel * velocityMult);
             }
         }

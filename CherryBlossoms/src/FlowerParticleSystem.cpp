@@ -9,7 +9,7 @@
 #include "FlowerParticleSystem.h"
 
 static const float MOMENTUM = .15f;
-static const float FLUID_FORCE = 6.6f;
+static const float FLUID_FORCE = 4.6f;
 FlowerParticleSystem::FlowerParticleSystem()
 {
     initVBO();
@@ -34,7 +34,7 @@ FlowerParticleSystem::FlowerParticleSystem()
         {
             if(pixels[curIndex*4+3] > 0)
             {
-                ofVec3f pos(i,j,5);
+                ofVec3f pos(i,j,ofRandom(4.f)-2.f);
                 mTreePositions.push_back(pos);
             }
             curIndex++;
@@ -63,7 +63,7 @@ void FlowerParticleSystem::update(const msa::fluid::Solver &solver)
     float tm = ofGetElapsedTimef();
     ofVec2f windowSize = ofGetWindowSize();
     ofVec2f windowTrans = 1.f / windowSize;
-    ofVec2f gravity(0,4);
+    ofVec2f gravity(0.f,3.f);
     //move the particles
 //    for( std::vector<BlossomParticle>::iterator it = mBlossoms.begin(); it < mBlossoms.end(); it++)
     for(int i = 0; i < FLOWER_COUNT; i++)
@@ -75,6 +75,8 @@ void FlowerParticleSystem::update(const msa::fluid::Solver &solver)
             mBlossoms[i].mVel += mBlossoms[i].mVel * MOMENTUM;
             
             mBlossoms[i].mVel += gravity/mBlossoms[i].mMass;
+            mBlossoms[i].mVel += ofSignedNoise(mBlossoms[i].mPos.x,mBlossoms[i].mPos.y,mBlossoms[i].mPos.z,tm/1500.f)/mBlossoms[i].mMass;
+            
             mBlossoms[i].mPos +=  mBlossoms[i].mVel;
             
             if(mBlossoms[i].mPos.y > windowSize.y+50 ||
@@ -194,7 +196,7 @@ void FlowerParticleSystem::drawBlossom(BlossomParticle* b, long long tm)
             ofScale(pct,pct, MIN(pct*4,1));
         }
     }
-    float scl = 20.f;
+    float scl = 17.f;
     ofScale(scl,scl,scl);
     if(mUseTextures)
         mQuad.drawElements( GL_TRIANGLE_STRIP, 12);

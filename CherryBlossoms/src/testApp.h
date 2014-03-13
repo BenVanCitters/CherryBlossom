@@ -59,7 +59,7 @@ public:
     bool mShowGround;
     ofImage mHex;
     bool mShowHex;
-
+    bool mShowFPS;
 };
 
 
