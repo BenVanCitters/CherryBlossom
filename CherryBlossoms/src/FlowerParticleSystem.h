@@ -13,7 +13,7 @@
 #include "BlossomParticle.h"
 #include "MSAFluidSolver.h"
 
-#define FLOWER_COUNT 300
+#define FLOWER_COUNT 200
 #define FLOWER_IMG_COUNT 5
 
 using namespace std;

@@ -22,7 +22,7 @@ BlossomParticle::BlossomParticle(int imgCount, ofVec3f pos)
                     ofRandom(maxRSpd*2)-maxRSpd);
     mImgIndex = (int)(ofRandom(imgCount));
     mPos = pos; //ofVec3f(ofRandom(ofGetWindowWidth()),ofRandom(600),1200-ofRandom(4000) );
-    mMass = 1+ofRandom(.5f);
+    mMass = .4+ofRandom(.5f);
     
     long long tm = ofGetElapsedTimeMillis();
     mGrowDur =ofRandom(30*1000);

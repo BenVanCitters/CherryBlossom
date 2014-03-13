@@ -5,8 +5,8 @@ void testApp::setup()
 {
 	// setup fluid stuff
 	fluidSolver.setup(100, 100);
-    fluidSolver.enableRGB(true).setFadeSpeed(0.002).setDeltaT(0.5).setVisc(0.00015).setColorDiffusion(0);
-	fluidDrawer.setup(&fluidSolver);
+//    fluidSolver.enableRGB(true).setFadeSpeed(0.002).setDeltaT(0.5).setVisc(0.00015).setColorDiffusion(0);
+//	fluidDrawer.setup(&fluidSolver);
 	fluidCellsX			= 150;
 	
 	drawFluid			= true;

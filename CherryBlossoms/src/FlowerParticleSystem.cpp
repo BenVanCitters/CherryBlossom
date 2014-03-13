@@ -28,13 +28,14 @@ FlowerParticleSystem::FlowerParticleSystem()
     //for each pixel add the position to the maks
     unsigned char* pixels = treeMask.getPixels();
     int curIndex = 0;
+    ofVec2f winSz = ofGetWindowSize();
     for(int j = 0; j < treeMask.height; j++)
     {
         for(int i = 0; i < treeMask.width; i++)
         {
             if(pixels[curIndex*4+3] > 0)
             {
-                ofVec3f pos(i,j,ofRandom(4.f)-2.f);
+                ofVec3f pos(i*winSz.x/treeMask.width,j*winSz.y/treeMask.height,ofRandom(4.f)-2.f);
                 mTreePositions.push_back(pos);
             }
             curIndex++;
@@ -75,7 +76,7 @@ void FlowerParticleSystem::update(const msa::fluid::Solver &solver)
             mBlossoms[i].mVel += mBlossoms[i].mVel * MOMENTUM;
             
             mBlossoms[i].mVel += gravity/mBlossoms[i].mMass;
-            mBlossoms[i].mVel += ofSignedNoise(mBlossoms[i].mPos.x,mBlossoms[i].mPos.y,mBlossoms[i].mPos.z,tm/1500.f)/mBlossoms[i].mMass;
+//            mBlossoms[i].mVel += ofSignedNoise(mBlossoms[i].mPos.x,mBlossoms[i].mPos.y,mBlossoms[i].mPos.z,tm/1500.f)/mBlossoms[i].mMass;
             
             mBlossoms[i].mPos +=  mBlossoms[i].mVel;
             
@@ -177,7 +178,7 @@ void FlowerParticleSystem::drawBlossom(BlossomParticle* b, long long tm)
 {
     ofSetColor(255,255,255);
     ofPushMatrix();
-    ofVec3f nPos = b->mPos/ofVec3f(1920,1080,1) *ofGetWindowSize();
+    ofVec3f nPos = b->mPos;
     ofTranslate(nPos);
     if(b->mState == blossomStateFalling)
     {

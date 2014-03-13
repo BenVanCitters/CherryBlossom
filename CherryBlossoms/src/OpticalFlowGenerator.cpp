@@ -71,7 +71,7 @@ void OpticalFlowGenerator::update()
 
 void OpticalFlowGenerator::draw()
 {
-//    mCam.draw(0, 0);
+    mCam.draw(0, 0);
     for(int y = 1; y + 1 < mYSteps; y++)
     {
         for(int x = 1; x + 1 < mXSteps; x++)
